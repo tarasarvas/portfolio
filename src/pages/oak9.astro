@@ -1,0 +1,336 @@
+---
+import CaseStudyLayout from '../layouts/CaseStudyLayout.astro';
+import Button from '../components/Button.astro';
+import StickyScroll from '../components/StickyScroll.astro';
+
+const requirements = [
+  'Cloud Architecture and its Status',
+  'Deployed Resources',
+  'Resource Properties',
+  'Design Gaps and Violations',
+  'Compliance Objectives',
+  'Security Requirements',
+];
+
+const canvasChapters = [
+  {
+    id: 'shape',
+    heading: 'Shape',
+    paragraphs: [
+      'I noticed that typically resources were not contained in any shape, and looked shapeless and confusing.',
+      'I decided to maintain each resource in a square box to provide consistency.',
+    ],
+    image: '/images/Resource-Box.png',
+  },
+  {
+    id: 'functionality',
+    heading: 'Functionality',
+    paragraphs: [
+      'None of the diagrams allowed to group/collapse elements (Clusters, Subnets, etc.).',
+      'I decided to introduce the expand feature to allow the user to focus its attention and decrease cognitive load.',
+    ],
+    image: '/images/Expand-Collapse.gif',
+  },
+  {
+    id: 'status',
+    heading: 'Status',
+    paragraphs: [
+      'To display the resource status I wanted to color them in red, but security engineers stated that architecture is never completely done. Hence, all the resources would constantly be red.',
+      'Thus, I introduced an indicator in the top right corner to display the status.',
+    ],
+    image: '/images/Status-Indicator.png',
+  },
+];
+
+const blueprintChapters = [
+  {
+    id: 'bp-resource',
+    heading: 'Blueprint on Resource',
+    paragraphs: [
+      'On my first iteration, I required the user to manually attach a blueprint to the resource but soon I realized that if the user deploys 100 resources it would be a nightmare.',
+    ],
+    image: '/images/Blueprint-on-Resource.gif',
+  },
+  {
+    id: 'resource-bp',
+    heading: 'Resource on Blueprint',
+    paragraphs: [
+      'Another idea was to use blueprints to build the cloud architecture first and then deploy resources to fill in the gaps. However, architecture is usually built directly in the cloud and only then had to be secured.',
+    ],
+    image: '/images/Resource-on-Blueprint.gif',
+  },
+  {
+    id: 'flip',
+    heading: 'Flip',
+    paragraphs: [
+      'In my final iteration, the moment the user adds a resource to the project a blueprint is attached automatically, which the user can change later based on preference.',
+    ],
+    image: '/images/Resource-Flip.gif',
+  },
+];
+---
+
+<CaseStudyLayout
+  title="oak9"
+  description="oak9 is a web platform that analyzes cloud infrastructure to provide security to cloud-native applications"
+>
+  <div class="case-study-hero-section">
+    <img src="/images/Artboard.png" loading="lazy" alt="" class="background-image" />
+    <div class="gradient-for-logo">
+      <div class="div-block-for-logo-background">
+        <img src="/images/oak9-Logos-26.png" loading="lazy" width="240" alt="oak9" class="logo-for-background" />
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-title-block">
+      <h2 class="case-study-header">Visualize security of cloud infrastructure</h2>
+      <p class="case-study-paragraph">oak9 is a web platform that analyzes cloud infrastructure to provide security to cloud-native applications</p>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-block challenge">
+      <h3 class="underlined-header challenge">Challenge</h3>
+      <div class="w-layout-grid challenge-grid">
+        <p>As technology moves to the cloud, managing security risks across diverse ecosystems becomes increasingly difficult. Most security teams still rely on manual processes, creating security reports and guidelines that do not clearly depict the state of the cloud infrastructure.</p>
+        <p>To serve our customers better and to receive a competitive advantage, oak9 decided to introduce a feature that would allow customers to visually depict their cloud infrastructure and make security design changes in a simple drag-and-drop interface.</p>
+      </div>
+    </div>
+    <div class="case-study-text-block big-gap-down wide">
+      <div class="outcomes-block"><h3 class="underlined-header outcomes">Outcomes</h3></div>
+      <p class="case-study-paragraph">At the end of this project, I designed a core feature of the platform where users spend more than 60% of their oak9 usage time.</p>
+      <p class="case-study-paragraph">The feature was unique as it allowed users to visualize the security of cloud infrastructure which none of oak9 competitors did. This led to an almost <a href="https://finance.yahoo.com/news/oak9-secures-5-9-million-130000859.html">$6 million seed round</a> funding after implementation.</p>
+      <p class="case-study-paragraph">Lastly, because I designed this feature in close collaboration with our customers and design partners I received extremely positive feedback after the release.</p>
+      <Button href="#Final-Design" variant="secondary" caseStudy>SEE FINAL DESIGN</Button>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Let's Get This Party Started</h1></div>
+
+  <div class="case-study-section">
+    <div class="w-layout-grid _2-column-grid big-gap-up">
+      <div>
+        <h2 class="_2-column-header">Requirements</h2>
+        <p class="_2-column-paragraph">Based on the conversations with founders and oak9 customers I defined 6 initial requirements for the feature</p>
+      </div>
+      <div class="drop-shadow-block">
+        {requirements.map((r, i) => (
+          <div class="list-row">
+            <div class="div-block-4">
+              <img src="/images/Checkbox.svg" loading="lazy" width="32" alt="" class="checkbox-icon" />
+              <p class="b1-regular list-row">{r}</p>
+            </div>
+            <div class={`line-block ${i === requirements.length - 1 ? 'white' : ''}`}></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header">Inspirations</h2>
+      <p class="case-study-paragraph">During the interviews, customers reported frustration with security tools that have a confusing visual design. They would prefer a design that looks and works similarly to the software they already use.</p>
+    </div>
+    <div class="block">
+      <h2 class="quote-text">”With all these security platforms, they all introduce some new UI. I just want to have something I'm used to - like Azure DevOps for example”</h2>
+      <p class="quote-author">- Scott, Product Security Engineer (oak9 customer)</p>
+    </div>
+    <div class="case-study-text-block">
+      <p class="case-study-paragraph">I looked at the software DevOps engineers and security engineers are using to find common elements that could be used to set up the layout for my feature.</p>
+      <p class="case-study-paragraph">I noticed that visual software usually consists of working space and some side menus. Additionally, the information about errors was usually showcased in the bottom menu (e.g. Microsoft Visual Studio).</p>
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+  <div class="case-study-section gray">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Solid Foundation</h2>
+      <p class="case-study-paragraph">Looking at different software DevOps engineers and security engineers are using helped me to define general elements of the new feature. Those elements were: Canvas, Left Menu, Right Menu, and Bottom Menu.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Canvas.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Canvas, Left Menu, Right Menu, and Bottom Menu that defines the foundation of the feature</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Canvas</h1></div>
+  <div class="case-study-section white-vertical">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Inspiration</h2>
+      <p class="case-study-paragraph">I decided to display oak9's cloud architecture diagram in the canvas space to utilize dedicated real estate. I also analyzed how AWS, Azure, and 3rd party companies display their diagrams to see elements I could use and improve.</p>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/Architecture-Example.png" loading="lazy" alt="AWS diagram" />
+      <div class="b2-regular gray">AWS diagram</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black">
+    <StickyScroll overline="Improvements" chapters={canvasChapters} dark />
+  </div>
+
+  <div class="case-study-section white-vertical">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Diagram</h2>
+      <p class="case-study-paragraph">After implementing changes and incorporating most important elements (resources, VPCs, Subnets, etc.) I created my own diagram style and received positive feedback.</p>
+    </div>
+    <div class="block">
+      <h2 class="quote-text">“This is awesome! It looks even better than AWS”</h2>
+      <p class="quote-author">- Igor, Senior Software Engineer at Eleks</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Workspace.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Canvas Design</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Left Menu</h1></div>
+  <div class="case-study-section">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Drag-n-Drop</h2>
+      <p class="case-study-paragraph">Initially I wanted to display all available resources in the left menu and allow the user to easily add them with a drag-n-drop functionality similarly to Draw.io</p>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/Drag-Resources.gif" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Drag-n-Drop Functionality</div>
+    </div>
+    <div class="case-study-text-block">
+      <p class="case-study-paragraph">After discussing the drag-and-drop idea with developers I realized that the implementation would be tedious due to the graphic library we used. Additionally, users wanted to see more information about available resources to select a desired one.</p>
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+  <div class="case-study-section gray">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Pop-Up</h2>
+      <p class="case-study-paragraph">Since users needed more information I decided to introduce “Add Resources” functionality as a pop-up feature and display selected resources on the left menu. This design worked better because oak9 was intelligent enough to draw connections automatically, thus saving time for the user.</p>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/Add-Resources-Small.gif" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Pop-Up Functionality</div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Final Iteration</h2>
+      <p class="case-study-paragraph">After everything was done, users could not find the “Add Resources” icon. I had to redesign the button and based on the survey results I introduced a new way to add resources to the project.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Left-Menu.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Left Menu Design</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Right Menu</h1></div>
+  <div class="case-study-section">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Right Menu</h2>
+      <p class="case-study-paragraph">By analyzing different software I found that usually the properties of selected elements were displayed on the right menu. I decided not to deviate from this pattern and introduced resource properties on the right menu of the platform.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Right-Menu.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Right Menu Design</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Bottom Menu</h1></div>
+  <div class="case-study-section gray">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">First Iteration</h2>
+      <p class="case-study-paragraph">The core functionality of oak9 is to display design gaps and provide guidelines on how to address them. Based on my research, the majority of the time issues are displayed at the bottom menu.</p>
+      <p class="case-study-paragraph">In my initial design, at the bottom menu, I displayed Design Gaps and Warnings. Potential design gaps that oak9 did not have visibility into I showed as Tasks.</p>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/Bottom-Menu-Start.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">First Iteration of Bottom Menu</div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header">Feedback</h2>
+      <p class="case-study-paragraph">However, users came back to me and stated that they need more granular information about the design gaps because they needed to prioritize their efforts.</p>
+    </div>
+    <div class="block">
+      <h2 class="quote-text">“Security is not a functional feature and you can not sell it for additional money. We need to know the priorities because every hour spent on security is a necessary evil that is supposed to be reduced to the absolute max.”</h2>
+      <p class="quote-author">- Oleg, Product Security Architect (oak9 customer)</p>
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+  <div class="case-study-section gray">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Second Iteration</h2>
+      <p class="case-study-paragraph">Based on the feedback I introduced 4 severity categories and represented them with emojis to stay away from burying the user in red screens. Additionally, I assigned severity status (that can be changed based on user preference) to each violation and matched the severity of the design gap with the status of the most severe violation.</p>
+      <p class="case-study-paragraph">This allowed me to provide a more granular view for our customers without overwhelming them.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Bottom-Menu-Final.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Second Iteration of Bottom Menu</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Blueprint View</h1></div>
+  <div class="case-study-section white-vertical">
+    <div class="w-layout-grid _2-column-grid big-gap-up">
+      <div>
+        <h2 class="_2-column-header">Unfinished Business</h2>
+        <p class="_2-column-paragraph">After the bottom menu design was finished I realized that one of the requirements wasn't addressed.</p>
+        <p class="_2-column-paragraph">Specifically, the security requirements oak9 enforces on each resource.</p>
+        <p class="_2-column-paragraph">The demand for security requirements was coming from security engineers since it was their main responsibility.</p>
+      </div>
+      <div class="drop-shadow-block">
+        {requirements.map((r, i) => (
+          <div class="list-row">
+            <div class="div-block-4">
+              <img src="/images/Checkbox_1.svg" loading="lazy" width="32" alt="" class="checkbox-icon" />
+              <p class="b1-regular list-row">{r}</p>
+            </div>
+            <div class={`line-block ${i === requirements.length - 1 ? 'white' : ''}`}></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study-section black">
+    <StickyScroll overline="Iterations" chapters={blueprintChapters} dark />
+  </div>
+
+  <div class="case-study-section white-vertical">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Blueprint View</h2>
+      <p class="case-study-paragraph">Based on this insights I introduced a view that allowed security engineers to see all security requirements attached to a resource and adjust them if necessary. At oak9 we call it Blueprint View because it consists of blueprints - a set of security requirements for each resource to ensure they are secure.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Blueprint-View-Collapsed.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Blueprint View Design</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Current Design</h1></div>
+  <section id="Final-Design" class="case-study-section">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Additional Features</h2>
+      <p class="case-study-paragraph">After the project was considered to be over, more iterations and more feature demands came my way. I am glad the design I prepared was flexible enough to incorporate additional features.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Complete-Visual-Designer.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Current Design With Additional Functionality</div>
+    </div>
+  </section>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Final Thoughts</h1></div>
+  <div class="case-study-section">
+    <div class="case-study-text-block big-gap-up big-gap-down">
+      <h2 class="case-study-header filler-up">Learnings</h2>
+      <p class="case-study-paragraph">Designing a core feature of the platform is both extremely challenging and rewarding. I consider this project to be a success since it became the most important feature of the platform where users on average spend more than 60% of the time on the platform. I am also proud that while the feature expanded my design was capable to adjust.</p>
+      <p class="case-study-paragraph">During this project, I iterated more than ever. I learned that while sometimes there is no time for research I should never skip usability testing. It's a great way to avoid customer frustrations and wasting development lifecycles in the future.</p>
+      <p class="case-study-paragraph">I also added workshops as part of the design process and it allowed the team to align in a matter of minutes. If the feature is complicated and at the end of the typical meeting the team did not come up with any next steps - I set up a time for a workshop. It works like magic.</p>
+    </div>
+  </div>
+</CaseStudyLayout>

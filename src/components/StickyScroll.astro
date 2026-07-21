@@ -1,0 +1,64 @@
+---
+/**
+ * Sticky-scroll storytelling block (used in case studies + about).
+ * Left column: text chapters that scroll. Right column: a sticky image
+ * that swaps to match whichever chapter is in view. On small screens the
+ * image falls inline under each chapter (handled by .sliding-image.hide).
+ *
+ * Replaces Webflow's IX2 scroll interactions with a small IntersectionObserver.
+ */
+interface Chapter {
+  id: string;
+  heading: string;
+  paragraphs: string[]; // may contain inline HTML (<strong>, links)
+  image: string;
+  imageAlt?: string;
+}
+interface Props {
+  chapters: Chapter[];
+  overline?: string; // optional highlighted label above the first chapter
+  dark?: boolean;     // white text on dark section
+}
+const { chapters, overline, dark = false } = Astro.props;
+const textClass = dark ? 'white' : '';
+const uid = Math.random().toString(36).slice(2, 8);
+---
+
+<div class="case-study-block left-right-element" data-sticky={uid}>
+  <div class="left-column">
+    {chapters.map((c, i) => (
+      <div class={`left-right-text-block ${i === 0 ? 'first' : ''}`} data-chapter={c.id}>
+        {i === 0 && overline && <h3 class="underlined-header sliding-images">{overline}</h3>}
+        <h2 class={`_2-column-header ${textClass}`} set:html={c.heading} />
+        {c.paragraphs.map((p) => <p class={`_2-column-paragraph ${textClass}`} set:html={p} />)}
+        <img src={c.image} loading="lazy" alt={c.imageAlt ?? ''} class="sliding-image hide" />
+      </div>
+    ))}
+  </div>
+  <div class="right-column">
+    <div class="content-holder">
+      {chapters.map((c, i) => (
+        <div class="sliding-picture" data-pic={c.id} style={i === 0 ? '' : 'opacity:0'}>
+          <img src={c.image} loading="lazy" alt={c.imageAlt ?? ''} class="sliding-image" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-sticky]').forEach((root) => {
+    const pics = new Map<string, HTMLElement>();
+    root.querySelectorAll<HTMLElement>('[data-pic]').forEach((el) => pics.set(el.dataset.pic!, el));
+    const show = (key: string) => pics.forEach((el, k) => (el.style.opacity = k === key ? '1' : '0'));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) show((entry.target as HTMLElement).dataset.chapter!);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    root.querySelectorAll<HTMLElement>('[data-chapter]').forEach((c) => observer.observe(c));
+  });
+</script>

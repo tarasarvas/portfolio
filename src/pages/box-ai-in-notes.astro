@@ -1,0 +1,202 @@
+---
+import CaseStudyLayout from '../layouts/CaseStudyLayout.astro';
+import YouTube from '../components/YouTube.astro';
+---
+
+<CaseStudyLayout title="Box AI in Notes" description="How I helped 25% of Box Notes customers work faster and contributed sales growth by integrating AI.">
+    <div class="case-study-hero-section">
+      <img src="/images/Notes-AI.png" loading="lazy" alt="" class="background-image" />
+      <div class="gradient-for-logo">
+        <div class="div-block-for-logo-background narrow">
+          <img src="/images/BoxLogo.png" loading="lazy" width="180" alt="Box" class="logo-for-background" />
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-title-block narrow">
+        <h2 class="case-study-header">Transforming Content Creation with AI in Box Notes</h2>
+        <p class="case-study-paragraph">How I helped 25% of Box Notes customers work faster and contributed sales growth by integrating AI.</p>
+      </div>
+      <YouTube id="aRcksXs0Z1Y" title="Notes AI Final Walkthrough" />
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-text-block gap-up">
+        <div class="outcomes-block"><h3 class="underlined-header">At a Glance</h3></div>
+        <p class="case-study-paragraph"><strong>Timeline:</strong> 4 months<br><strong>Team:</strong> CEO, CTO, PM, 3 engineers<br><strong>Role:</strong> Lead Product Designer</p>
+        <p class="case-study-paragraph">I was responsible for defining use cases, conducting competitive analysis, designing the end-to-end interaction, creating prototypes, and running usability tests. I led multiple design iterations and partnered closely with engineering and leadership to launch Box Notes' first AI-powered experience.</p>
+      </div>
+      <div class="case-study-text-block">
+        <div class="outcomes-block"><h3 class="underlined-header challenge">Challenge</h3></div>
+        <p class="case-study-paragraph">In late 2022, AI tools like ChatGPT and Notion AI reset expectations for how people draft and refine text. Box leadership wanted to bring similar capabilities into Box Notes for its customers both to support user productivity and to strengthen Box's positioning in enterprise AI. The challenge involved:</p>
+        <ul role="list" class="case-study-list-group">
+          <li class="case-study-list"><strong>Balancing user trust:</strong> AI had to feel supportive, not intrusive or risky. Additionally, users might feel judged if colleagues saw AI usage in shared docs.</li>
+          <li class="case-study-list"><strong>Managing real-time collaboration:</strong> inline AI text could cause edit conflicts but the solution had to work seamlessly in real-time collaboration.</li>
+          <li class="case-study-list"><strong>Leadership required speed:</strong> ship a viable, competitive solution in just a few months.</li>
+        </ul>
+      </div>
+      <div class="case-study-text-block big-gap-down">
+        <div class="outcomes-block"><h3 class="underlined-header outcomes">Outcomes</h3></div>
+        <p class="case-study-paragraph">In just four months, I designed and launched the first AI-powered writing experience in Box Notes.<br>The results were significant:</p>
+        <ul role="list" class="case-study-list-group">
+          <li class="case-study-list"><strong>25% of active customers adopted Box AI</strong>, with over <strong>3,000 prompts submitted weekly</strong>.</li>
+          <li class="case-study-list">The solution <strong>resolved privacy and collaboration concerns</strong> while aligning with simple aesthetic.</li>
+          <li class="case-study-list">At the business level, the feature provided Box with a clear differentiation in enterprise productivity, contributed to increased <strong>Enterprise+ sales</strong>.</li>
+        </ul>
+        <p class="case-study-paragraph">This project not only improved day-to-day productivity for thousands of users but also helped Box position itself as a serious player in the emerging AI productivity space.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Setting Things Up</h1></div>
+    <div class="case-study-section">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">What is Box Notes?</h2>
+        <p class="case-study-paragraph">Box Notes is Box's real-time collaborative editor. Teams use it every day for <strong>meeting notes, documentation, and project planning,</strong> relying on its <strong>lightweight design</strong> and <strong>enterprise security</strong> to stay aligned without friction.</p>
+        <p class="case-study-paragraph">Any new feature had to respect these strengths. Adding AI needed to feel seamless, trustworthy, and consistent with the lightweight, secure experience that users already valued.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Default-Screen.png" loading="lazy" alt="Box Notes" class="case-study-image" />
+        <div class="b2-regular gray">Box Notes</div>
+      </div>
+    </div>
+
+    <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-bg)"></div></div>
+    <div class="case-study-section black">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up white">Use Cases</h2>
+        <p class="case-study-paragraph white big-gap-down">I worked closely with leadership to define how AI could best support Box Notes users regarding text generation and editing. While I moved quickly and couldn't run early interviews with customers, I anchored our thinking in previously observed user pain points and conversations with internal stakeholders. I defined two biggest, recurring user pain points in Box Notes:</p>
+        <p class="case-study-paragraph white gap-down"><strong>1. Generate text (overcome the blank page)</strong><br><br>Users often struggled with the “blank page” — kicking off blog posts, project docs, or announcements from scratch. AI could generate a first draft instantly, giving users something to react to instead of starting cold.</p>
+        <div class="block dark">
+          <h2 class="quote-text on-dark">"The hardest part is just getting started"</h2>
+          <p class="quote-author on-dark">-Member of marketing staff</p>
+        </div>
+        <p class="case-study-paragraph white gap-down"><strong>2. Improve and summarize existing text (distill the overwhelming)</strong><br><br>Users had text already, but needed it refined — clearer, shorter, or adjusted for tone. For example, rewriting a dense meeting recap into a concise stakeholder summary. AI could edit or re-express a selected paragraph, while preserving context.</p>
+        <div class="block dark">
+          <h2 class="quote-text on-dark">"After a half-hour meeting, I spend another 30 minutes just getting the note into shape"</h2>
+          <p class="quote-author on-dark">- Customer success manager</p>
+        </div>
+      </div>
+    </div>
+    <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-bg)"></div></div>
+
+    <div class="case-study-section">
+      <div class="case-study-text-block gap-up">
+        <h2 class="case-study-header filler-up">Competitive Analysis</h2>
+        <p class="case-study-paragraph gap-down">This project began at the very start of the generative AI boom. With few established design patterns, I turned to the announcement videos from <strong>Notion AI, Microsoft 365 Copilot, and Google</strong> to understand how AI might reshape productivity tools.</p>
+        <p class="case-study-paragraph gap-down"><strong>Key Findings:</strong><br>Across products, <strong>AI-generated text appeared directly in the document canvas</strong> — reinforcing the idea that AI should live where users already work. Each also emphasized iteration and control, allowing users to <strong>refine or discard drafts</strong> rather than accept them blindly.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Comp.png" loading="lazy" alt="Competition" class="case-study-image" />
+        <div class="b2-regular gray">Competition</div>
+      </div>
+    </div>
+
+    <div class="filler-section"><div class="filler-image very-light-gray" style="min-height:40px"></div></div>
+    <div class="case-study-section gray">
+      <div class="case-study-text-block big-gap-down">
+        <h2 class="case-study-header filler-up">Core Assumptions</h2>
+        <p class="case-study-paragraph">Before ideating, I defined a set of guiding assumptions based on Box's product values, user workflows, and early signals from generative AI tools:</p>
+        <ol role="list" class="case-study-list-group gap-down">
+          <li class="case-study-list"><strong>Maintain trust through security:</strong><br>AI would have to respect existing permissions and never retains customer data. On top of that, design had to keep users in control so they could fully trust how AI content enters their notes.</li>
+          <li class="case-study-list"><strong>Keep the experience simple:</strong><br>Box Notes is valued for its clean, lightweight experience. AI could not add friction or complexity.</li>
+          <li class="case-study-list"><strong>Generated text must stay in the note context:</strong><br>Since most work happens on the editing canvas in Box Notes, pulling users into separate form factors (such as side panels or overlays) would disrupt focus and reduce the value of staying in flow.</li>
+          <li class="case-study-list"><strong>Users want to iterate, not accept a first draft:</strong><br>Early studies of generative AI showed that people rarely accept the first output. They refine, regenerate, and tweak until the text feels right.</li>
+        </ol>
+        <div class="outcomes-block"><h3 class="underlined-header challenge">Special Remark</h3></div>
+        <p class="case-study-paragraph gap-down"><strong>Expectation of inline generation</strong><br>Competitors like Notion AI and Microsoft Co-pilot set the mental model that AI text appears inline, within the document. However, engineering flagged this as a scope creep: it would require deep changes to the editor codebase and expose complex edge cases in real-time collaboration.</p>
+        <p class="case-study-paragraph"><strong>Design implication</strong><br>Instead of inserting AI output directly into the canvas, I decided to explore adjacent solutions that could respect user expectations while avoiding technical and collaborative risks.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Iteration, Iteration, Iteration</h1></div>
+    <div class="case-study-section white-vertical very-light-gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">First Iteration: <strong>Inline modal</strong></h2>
+        <p class="case-study-paragraph">My first approach was an inline modal — a contained surface that stood out against the white canvas but still felt simple and integrated into the editor.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/1st-Iteration.gif" loading="lazy" alt="1st Iteration" />
+        <div class="b2-regular gray">1st Iteration</div>
+      </div>
+      <div class="case-study-text-block">
+        <h3 class="underlined-header sliding-images black feedback">Feedback</h3>
+        <p class="case-study-paragraph">Leadership immediately flagged that it felt <strong>“heavy”</strong> and cluttered the otherwise lightweight editor.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section very-light-gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Second Iteration: <strong>Mimicking inline text</strong></h2>
+        <p class="case-study-paragraph">Next, to make the experience feel lighter, I explored generating text that appeared as part of the note itself — essentially mimicking inline insertion without actually committing it to the shared document.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/2nd-Iteration.gif" loading="lazy" alt="2nd Iteration" />
+        <div class="b2-regular gray">2nd Iteration</div>
+      </div>
+      <div class="case-study-text-block">
+        <h3 class="underlined-header sliding-images black feedback">AHA Moment</h3>
+        <p class="case-study-paragraph">In usability sessions, I realized the blocker wasn't just visual weight — it was <strong>social visibility.</strong> Users didn't want collaborators to see they were using AI, especially if the output wasn't final.</p>
+      </div>
+      <div class="block">
+        <h2 class="quote-text">"I'd hope others can't see the AI text … at least not until I choose to keep it"</h2>
+        <p class="quote-author">- Usability test participant, 32 female</p>
+      </div>
+    </div>
+
+    <div class="case-study-section big-gap-down very-light-gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Third Iteration: Best of both worlds</h2>
+        <p class="case-study-paragraph">To solve both simplicity and privacy, I moved the flow back into an inline modal. Users could generate, refine, and only insert text into the note when ready.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/3rd-Iteration.gif" loading="lazy" alt="3rd Iteration" />
+        <div class="b2-regular gray">3rd Iteration</div>
+      </div>
+      <div class="case-study-text-block">
+        <h3 class="underlined-header sliding-images black feedback">Feedback</h3>
+        <p class="case-study-paragraph">This solved the clutter and visibility issues, users had a great reaction to the concept and leadership agreed it felt much more aligned with Box Notes' collaborative context. However, it still lacked a <strong>clear Box identity</strong> — the experience felt like a generic AI demo.</p>
+      </div>
+      <div class="block">
+        <h2 class="quote-text">"Wow, it was very easy ... Unless I'm just really behind on times, I don't think there is anything like this and I feel like it's insanely useful."</h2>
+        <p class="quote-author">- Usability test participant, 40 female</p>
+      </div>
+    </div>
+
+    <div class="filler-section"><div class="filler-image very-light-gray" style="min-height:40px"></div></div>
+    <div class="case-study-section gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Branding</h2>
+        <p class="case-study-paragraph">By this time, marketing team, leadership and I had also agreed on the branding. I incorporated it into the AI modal by adding color and enhancing the feature's discoverability.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/Box-AI.png" loading="lazy" alt="Branding Components" />
+        <div class="b2-regular gray">Branding Components</div>
+      </div>
+    </div>
+
+    <div class="case-study-section white-vertical">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Final Design</h2>
+        <p class="case-study-paragraph">After everything was said and done, I was left with the final design.</p>
+      </div>
+      <YouTube id="aRcksXs0Z1Y" title="Notes AI Final Walkthrough" controls={false} caption="Final Box AI flow in Notes" />
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Looking Ahead</h1></div>
+    <div class="case-study-section big-gap-down">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Learnings</h2>
+        <p class="case-study-paragraph">Designing AI inside a collaborative product taught me three lessons that continue to guide my work:</p>
+        <ul role="list" class="case-study-list-group gap-down">
+          <li class="case-study-list"><strong>Trust and privacy are as important as functionality:</strong><br>Box is praised by enterprises for its security, which translates into user trust. Any AI feature had to preserve that trust by keeping users in control of their content.</li>
+          <li class="case-study-list"><strong>Flexibility beats prescriptive workflows:</strong><br>Box Notes is valued for its clean, lightweight experience. AI could not add friction or complexity.</li>
+          <li class="case-study-list"><strong>Designing with AI is about shaping perception:</strong><br>The main editing canvas in Box Notes is used during meetings and collaborative drafting sessions. Pulling users into separate form factors (like side panels or overlays) would disrupt focus and reduce the value of staying in flow.</li>
+        </ul>
+      </div>
+      <div class="case-study-text-block big-gap-down">
+        <h2 class="case-study-header filler-up">Reflections</h2>
+        <p class="case-study-paragraph">This was my first time designing an AI feature. It pushed me to think not only about usability, but about <strong>human psychology, trust, and product positioning</strong>. Moving forward, I approach AI design as a balance of utility, transparency, and empathy — principles I'm eager to apply at scale.</p>
+      </div>
+    </div>
+</CaseStudyLayout>

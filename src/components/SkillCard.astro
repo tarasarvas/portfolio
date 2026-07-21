@@ -1,0 +1,13 @@
+---
+/** A single skill/benefit card on the home page. */
+interface Props {
+  icon: string; // path under /images
+  label: string;
+}
+const { icon, label } = Astro.props;
+---
+
+<div class="skill-card">
+  <img src={icon} loading="lazy" alt="" />
+  <p class="_18px-regular">{label}</p>
+</div>

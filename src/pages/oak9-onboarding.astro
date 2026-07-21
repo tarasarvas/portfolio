@@ -1,0 +1,208 @@
+---
+import CaseStudyLayout from '../layouts/CaseStudyLayout.astro';
+import Button from '../components/Button.astro';
+import StickyScroll from '../components/StickyScroll.astro';
+import YouTube from '../components/YouTube.astro';
+
+const learningsChapters = [
+  {
+    id: 'steps',
+    heading: 'Too Many Steps',
+    paragraphs: [
+      'Users signed up for the platform and wanted to immediately see the value of the product. Asking them more questions was counterproductive.',
+      'In the next iteration I removed the list of questions. Instead I made safe assumptions that the user could change later.',
+    ],
+    image: '/images/Steps.png',
+  },
+  {
+    id: 'guidance',
+    heading: 'Lack of Guidance',
+    paragraphs: [
+      'Majority of the users though were perpetual intermediates, thus when it came to generating API tokens they have to do some research to complete the task.',
+      'I realized that I could remove their frustration by providing the integration instructions directly on our platform.',
+    ],
+    image: '/images/Path.png',
+  },
+  {
+    id: 'distrust',
+    heading: 'General Distrust',
+    paragraphs: [
+      "The product team thought users would connect their work cloud architecture. In reality users didn't trust oak9 and didn't want to connect their real architecture.",
+      "I decided to provide a worry-free example and clarified that some integrations request a read-only access and thus don't impose any risks.",
+    ],
+    image: '/images/Distrust.png',
+  },
+];
+---
+
+<CaseStudyLayout
+  title="oak9 Onboarding"
+  description="oak9 is a DevOps security platform that invests its resources in product-led growth"
+>
+  <div class="case-study-hero-section">
+    <img src="/images/Title-Image.png" loading="lazy" alt="" class="background-image" />
+    <div class="gradient-for-logo">
+      <div class="div-block-for-logo-background">
+        <img src="/images/oak9-Logos-26.png" loading="lazy" width="240" alt="oak9" class="logo-for-background" />
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-title-block">
+      <h2 class="case-study-header">Showing the value of oak9 in minutes</h2>
+      <p class="case-study-paragraph">oak9 is a DevOps security platform that invests it's resources in product-led growth initiatives</p>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-block challenge">
+      <h3 class="underlined-header challenge">Challenge</h3>
+      <div class="w-layout-grid challenge-grid">
+        <p>In April 2021, just 2 weeks before a scheduled soft launch the design team received a task to design an onboarding flow for first-time sign-up users. Due to a limited timeline, the designed onboarding flow simply followed an existing project creation flow.</p>
+        <p>This resulted in an alarming drop-off rate that indicated that the onboarding flow had to be redesigned. With more feedback and more time I had to decrease the drop-off rate and provide the value of oak9 to our new customers as fast as possible.</p>
+      </div>
+    </div>
+    <div class="case-study-text-block big-gap-down wide">
+      <div class="outcomes-block"><h3 class="underlined-header outcomes">Outcomes</h3></div>
+      <p class="case-study-paragraph">At the end of this project prepared a flow that reduced the time to onboard a user to less than 5 minutes and allowed the company to continue it's endeavour into product-led growth.</p>
+      <p class="case-study-paragraph">The new onboarding flow was built after multiple iterations and received extremely positive from both target users and investors.</p>
+      <Button href="#Final-Onboarding" variant="secondary" caseStudy>SEE FINAL DESIGN</Button>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Learning From Past Mistakes</h1></div>
+  <div class="case-study-section">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Past Onboarding</h2>
+      <p class="case-study-paragraph">The previous onboarding consisted of the same questions that the project creation flow, just represented in a different fashion.</p>
+    </div>
+    <div class="w-layout-grid _2-images big-gap-down">
+      <div class="image-with-text">
+        <img src="/images/Existing-Project-Creation.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Existing project creation flow</div>
+      </div>
+      <div class="image-with-text">
+        <img src="/images/Existing-Onboarding.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Existing onboarding flow</div>
+      </div>
+    </div>
+    <div class="case-study-text-block no-gap-down">
+      <p class="case-study-paragraph">However during the soft launch only 1 in 30 users completed the onboarding process. Considering that every user during the soft launch was part of the oak9 network the result was alarming.</p>
+    </div>
+    <div class="w-layout-grid _3-column-grid big-gap-down">
+      <h1 class="big-heading">1<strong class="bold-text-7">*</strong></h1>
+      <h1>in</h1>
+      <h1 class="big-heading">30</h1>
+      <p class="b2-regular gray">* All the users during soft launch were part of personal network</p>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Second Iteration</h1></div>
+  <div class="case-study-section gray">
+    <StickyScroll overline="Learnings" chapters={learningsChapters} />
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+  <div class="case-study-section">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header">My Design</h2>
+      <p class="case-study-paragraph">I wanted to show each step of the process in a center-aligned manner with a small supplementary text under the heading. The final step, integrations, would happen in the pop-up menu with instructions displayed on the right side.</p>
+    </div>
+    <div class="w-layout-grid _2-images big-gap-down">
+      <div class="image-with-text">
+        <img src="/images/Option1-Start.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">My design (Start)</div>
+      </div>
+      <div class="image-with-text">
+        <img src="/images/Option1-Finish.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">My design (Finish)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-study-section">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header">Other Design</h2>
+      <p class="case-study-paragraph">My other designer proposed a split-screen solution, where explanation were displayed on the left side, while the actions were taken on the right side. During the integration the instructions were shown first followed by the input fields.</p>
+    </div>
+    <div class="w-layout-grid _2-images big-gap-down">
+      <div class="image-with-text">
+        <img src="/images/Option2-Start.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Other design (Start)</div>
+      </div>
+      <div class="image-with-text">
+        <img src="/images/Option2-Finish.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Other design (Finish)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+  <div class="case-study-section gray">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header filler-up">Gathering Feedback</h2>
+      <p class="case-study-paragraph">Users generally loved the straightforwardness and the layout of my design but had a hard time noticing the integration instructions on the right side of the pop-up. In the second iteration users were confused about the split-screen and it took them longer to take each step, but they were able to integrate much faster as the instructions were front and center.</p>
+    </div>
+    <div class="case-study-image-block big-gap-down">
+      <img src="/images/Better-Layout.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">Successful Testing</div>
+    </div>
+  </div>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Third Iteration</h1></div>
+  <div class="case-study-section white-vertical">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Future Proof Design</h2>
+      <p class="case-study-paragraph">I decided to display oak9's cloud architecture diagram in the canvas space to utilize dedicated real estate. I also analyzed how AWS, Azure, and 3rd party companies display their diagrams to see elements I could use and improve.</p>
+    </div>
+    <div class="w-layout-grid _2-images">
+      <div class="image-with-text">
+        <img src="/images/1st-Fail.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">1st Iteration</div>
+      </div>
+      <div class="image-with-text">
+        <img src="/images/2nd-Fail.png" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">2nd Iteration</div>
+      </div>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/3rd-Success.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">3rd Iteration</div>
+    </div>
+  </div>
+
+  <div class="case-study-section white-vertical">
+    <div class="case-study-text-block">
+      <h2 class="case-study-header">New Slide-Up</h2>
+      <p class="case-study-paragraph">The integration pop-up had to be redesigned. I provided instructions in-line with the field to streamline the process and introduced a video walkthrough as well as the documentation link on the right side of the slide-up.</p>
+      <p class="case-study-paragraph">The slide-up very well received as now every user saw the video and the link but rarely needed them as the instructions were front and center.</p>
+    </div>
+    <div class="case-study-image-block">
+      <img src="/images/Slide-Up.png" loading="lazy" alt="" class="case-study-image" />
+      <div class="b2-regular gray">New Slide-Up</div>
+    </div>
+  </div>
+
+  <section class="case-study-section white-vertical">
+    <div id="Final-Onboarding" class="case-study-text-block">
+      <h2 class="case-study-header">Final Onboarding Flow</h2>
+      <p class="case-study-paragraph">After multiple iterations I landed on a final onboarding flow.</p>
+    </div>
+    <YouTube id="_XKeo2yRyBE" title="oak9 Onboarding Walkthrough" controls={false} caption="Final Onboarding Flow" />
+  </section>
+
+  <div class="case-study-section black"><h1 class="section-title-text">Final Thoughts</h1></div>
+  <div class="case-study-section big-gap-down">
+    <div class="case-study-text-block big-gap-up">
+      <h2 class="case-study-header filler-up">Learnings</h2>
+      <p class="case-study-paragraph">Before the start of this project I didn't know anything about product-led growth and how it would help oak9 to grow its user base. However, a self-service sign-up allowed us to save cost rather than hiring a huge sales team (which is deadly for an early-stage start-up) and show the value of oak9 in a matter of minutes.</p>
+      <p class="case-study-paragraph">I learned a lot about streamlining the process (e.g. even a click on the “Next” button can be avoided to speed up the flow) and how the user can drop because of the tinies roadblock.</p>
+      <p class="case-study-paragraph">Lastly, I knew that the project was a success when our main investor praised the new design.</p>
+    </div>
+    <div class="block">
+      <h2 class="quote-text">"This (onboarding flow) is multiple orders of magnitude better!"</h2>
+      <p class="quote-author">- Tim Tully, Partner at Menlo Ventures</p>
+    </div>
+  </div>
+</CaseStudyLayout>

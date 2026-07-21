@@ -1,0 +1,27 @@
+---
+/** A featured-project card on the home page. */
+interface Props {
+  href: string;
+  title: string;
+  subtitle: string;
+  image: string;      // full-size image under /images
+  srcset?: string;    // optional responsive srcset
+  sizes?: string;
+}
+const { href, title, subtitle, image, srcset, sizes } = Astro.props;
+---
+
+<a href={href} class="card-project">
+  <div class="project-text">
+    <h3 class="project-heading">{title}</h3>
+    <p class="_18px-regular gray">{subtitle}</p>
+  </div>
+  <img
+    src={image}
+    loading="lazy"
+    {...srcset ? { srcset } : {}}
+    {...sizes ? { sizes } : {}}
+    alt={title}
+    class="project-image"
+  />
+</a>

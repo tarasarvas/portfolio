@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import '../styles/case-study.css';
+
+const contactHref = 'mailto:tarasarvas@gmail.com?subject=Loved%20Your%20Portfolio!';
+
+// Each chapter: the sticky map shown on the right, plus the alternate
+// photos revealed when hovering the bold words in the left column.
+const chapters = [
+  {
+    key: 'ukraine',
+    map: '/images/Portfolio-Assets_Ukraine.png',
+    heading: 'Born and Raised in<br>Lviv, Ukraine',
+    lines: [
+      'Started my adult life with an Engineering degree',
+      'Designed and supervised multiple <strong data-reveal="residential">residential projects</strong> at an architectural bureau',
+      'Created a few <strong data-reveal="skateboards">handmade skateboards</strong> and then broke all of them',
+    ],
+  },
+  {
+    key: 'poland',
+    map: '/images/Portfolio-Assets_Poland.png',
+    heading: 'Took a Train to<br>Wroclaw, Poland',
+    lines: [
+      "Obtained a Master's degree in Engineering",
+      'Practiced <strong data-reveal="photography">film photography</strong> and developed films in a home-made studio',
+      'Created a <strong data-reveal="catan">custom Settlers of Catan</strong> board as a gift to my younger brother',
+    ],
+  },
+  {
+    key: 'illinois',
+    map: '/images/Portfolio-Assets_Illinois.png',
+    heading: 'Took a Plane to<br>Chicago, Illinois',
+    lines: [
+      'Led a team of designers to produce multiple <strong data-reveal="hospitality">hospitality projects</strong> across the US',
+      'Learned the art of digital design at FlatIron School x Designation',
+      'Designed products for both <strong data-reveal="tech">startups and enterprises</strong>',
+    ],
+  },
+];
+
+const reveals = [
+  { key: 'residential', src: '/images/Arch.jpeg', alt: 'A house in a cute neighborhood' },
+  { key: 'skateboards', src: '/images/Adobe-Express---file.png', alt: 'A custom skateboard' },
+  { key: 'photography', src: '/images/Photo.jpeg', alt: 'A black and white macro shot of a dragonfly' },
+  { key: 'catan', src: '/images/Adobe-Express---file-1.png', alt: 'A custom Settlers of Catan board' },
+  { key: 'hospitality', src: '/images/BN.jpeg', alt: 'A ping-pong social club called Spin in Washington D.C.' },
+  { key: 'tech', src: '/images/Weird-Image.jpeg', alt: 'A product design shot' },
+];
+---
+
+<BaseLayout title="About Me" current="about">
+  <div class="case-study-section">
+    <div class="w-layout-grid about-me-grid wide">
+      <div class="div-block-5">
+        <h2 class="_2-column-header warning">Who am I?</h2>
+        <p class="_2-column-paragraph">
+          With over <strong>10 years</strong> of design experience, I specialize in bridging user needs and
+          product goals through research-driven decisions. My engineering background helps me break down
+          problems logically, and my curiosity keeps me learn and improve every day.
+        </p>
+        <p class="_2-column-paragraph warning">
+          Currently I lead the collaboration apps team at Box, building a secure, AI-powered content
+          management platform for enterprises.
+        </p>
+      </div>
+      <img src="/images/My-Image.png" loading="lazy" alt="Taras Sarvas" class="image-6" />
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+
+  <div class="case-study-section gray">
+    <div class="case-study-block left-right-element about">
+      <div class="left-column">
+        {chapters.map((c, i) => (
+          <div class={`left-right-text-block ${i === 0 ? 'first' : ''}`} data-chapter={c.key}>
+            <img src={c.map} loading="lazy" alt={`A map for ${c.key}`} class="sliding-image hide about" />
+            <h2 class="_2-column-header" set:html={c.heading} />
+            {c.lines.map((line) => <p class="_2-column-paragraph" set:html={line} />)}
+          </div>
+        ))}
+      </div>
+      <div class="right-column">
+        <div class="content-holder" id="sticky-stage">
+          {chapters.map((c, i) => (
+            <div class="sliding-picture" data-pic={c.key} style={i === 0 ? '' : 'opacity:0'}>
+              <img src={c.map} loading="lazy" alt={`Map for ${c.key}`} class="sliding-image about" />
+            </div>
+          ))}
+          {reveals.map((r) => (
+            <div class="sliding-picture" data-pic={r.key} style="opacity:0">
+              <img src={r.src} loading="lazy" alt={r.alt} class="sliding-image about" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
+
+  <div class="section contact">
+    <div class="contact-me">
+      <img src="/images/Mail.png" loading="lazy" width="280" alt="" class="hidden-image" />
+      <div class="contact-me-text">
+        <h2 class="home-page-header">Contact Information</h2>
+        <p class="_18px-regular contact">
+          If you have a project in mind or you just want to talk about design, don’t hesitate to reach out.
+          Don’t be a stranger!
+        </p>
+        <Button href={contactHref} variant="secondary">CONTACT</Button>
+      </div>
+      <img src="/images/Chicago.png" loading="lazy" width="280" alt="" />
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Sticky-stage behavior (replaces Webflow IX2):
+  // - As each chapter scrolls into view, show that chapter's map.
+  // - Hovering a bold word reveals its photo; leaving restores the map.
+  const stage = document.getElementById('sticky-stage');
+  if (stage) {
+    const pics = new Map<string, HTMLElement>();
+    stage.querySelectorAll<HTMLElement>('[data-pic]').forEach((el) => pics.set(el.dataset.pic!, el));
+
+    let activeChapter = 'ukraine';
+    const show = (key: string) => {
+      pics.forEach((el, k) => (el.style.opacity = k === key ? '1' : '0'));
+    };
+
+    const chapters = document.querySelectorAll<HTMLElement>('[data-chapter]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeChapter = (entry.target as HTMLElement).dataset.chapter!;
+            show(activeChapter);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    chapters.forEach((c) => observer.observe(c));
+
+    document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((word) => {
+      word.style.cursor = 'help';
+      word.addEventListener('mouseenter', () => show(word.dataset.reveal!));
+      word.addEventListener('mouseleave', () => show(activeChapter));
+    });
+  }
+</script>

@@ -1,0 +1,306 @@
+---
+import CaseStudyLayout from '../layouts/CaseStudyLayout.astro';
+import StickyScroll from '../components/StickyScroll.astro';
+import YouTube from '../components/YouTube.astro';
+
+const builderChapters = [
+  {
+    id: 'notion',
+    heading: 'Notion-style builder',
+    paragraphs: ['Looked familiar but led users to think Hubs was a text editor, blurring the line between Hubs and Notes ❌'],
+    image: '/images/Text-Editor.png',
+  },
+  {
+    id: 'sidepanel',
+    heading: 'Side panel builder',
+    paragraphs: ['Provided structure but felt heavy for the early, simple set of actions ❌'],
+    image: '/images/Side-Panel.png',
+  },
+  {
+    id: 'inline',
+    heading: 'Inline editing with hover actions',
+    paragraphs: ['Lightweight, immediate, and WYSIWYG—ideal for MVP ✅'],
+    image: '/images/Add-on-Hover.png',
+  },
+];
+
+const insightsChapters = [
+  {
+    id: 'anchor',
+    heading: 'Anchor Point',
+    paragraphs: ['Users understand that pages/tabs are part of the same Hub, as long as they have a navigation that acts as an anchor point.'],
+    image: '/images/Anchor.png',
+  },
+  {
+    id: 'home',
+    heading: 'Home Page',
+    paragraphs: ['Users addressed the starting page of a Hub as a Home page'],
+    image: '/images/Home.png',
+  },
+  {
+    id: 'scroll',
+    heading: 'Scroll First',
+    paragraphs: ['Majority of users (83%) scrolled through the page before doing any other action regardless of the concept'],
+    image: '/images/Scroll.png',
+  },
+];
+
+const outlineChapters = [
+  {
+    id: 'twocol',
+    heading: 'Two Columns',
+    paragraphs: ['Having two columns was confusing as pages and section outline were competing with each other without clear hierarchy'],
+    image: '/images/Side-by-Side.png',
+  },
+  {
+    id: 'embedded',
+    heading: 'Embedded',
+    paragraphs: ['Embedding section outline within the content worked great but it was stealing a lot of vertical real estate above the "fold"'],
+    image: '/images/With-Content.png',
+  },
+  {
+    id: 'merged',
+    heading: 'Merged',
+    paragraphs: ['While being efficient it was quite overwhelming for the user to understand a merged version of pages and section outline'],
+    image: '/images/Combined.png',
+  },
+];
+
+const stats = [
+  { icon: '/images/75.svg', alt: '75%', text: '75% of Box Search queries are 3 words or fewer' },
+  { icon: '/images/60.svg', alt: '60%', text: 'More than 60% of Hubs search queries were AI related' },
+  { icon: '/images/AI_1.svg', alt: 'Magic Wand', text: 'Good AI answers often made traditional results irrelevant' },
+  { icon: '/images/50.svg', alt: '50%', text: 'More than 50% of Box search results found via quick search' },
+  { icon: '/images/4.5.svg', alt: '4.5x', text: 'Hubs users searched 4.5× more when AI was available' },
+  { icon: '/images/Quote.svg', alt: 'quotation mark', text: 'Context matters and quality citations help build trust' },
+];
+---
+
+<CaseStudyLayout title="Box Hubs" description="How I brought clarity, direction, and end-to-end design to a complex 0→1 product at Box.">
+    <div class="case-study-hero-section">
+      <img src="/images/Title-Image_1.png" loading="lazy" alt="" class="background-image" />
+      <div class="gradient-for-logo">
+        <div class="div-block-for-logo-background narrow">
+          <img src="/images/BoxLogo.png" loading="lazy" width="180" alt="Box" class="logo-for-background" />
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-title-block narrow">
+        <h2 class="case-study-header">Surface great content faster with Box Hubs</h2>
+        <p class="case-study-paragraph">How I brought clarity, direction, and end-to-end design to a complex 0→1 product at Box.</p>
+      </div>
+      <YouTube id="2JMYGK6HbT8" title="Hubs Final Walkthrough" />
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-text-block gap-up">
+        <div class="outcomes-block"><h3 class="underlined-header">At a Glance</h3></div>
+        <p class="case-study-paragraph"><strong>Timeline:</strong> 2022 → 2024 (GA)<br><strong>Team:</strong> PM, Eng Lead, 8 Engineers<br><strong>Role:</strong> Lead Product Designer</p>
+        <p class="case-study-paragraph">I joined Box Hubs after initial research and a handful of conceptual mocks existed—but the product direction was still highly ambiguous. My role was to take scattered insights and incomplete ideas and turn them into a coherent, scalable product. Over two years, I led the end-to-end design of Hubs: information architecture, creation workflows, builder model, search, and hierarchical page structure.</p>
+      </div>
+      <div class="case-study-text-block">
+        <div class="outcomes-block"><h3 class="underlined-header challenge">Case Study Context</h3></div>
+        <p class="case-study-paragraph">As customer use of Box grew, so did the amount of content teams needed to manage. Box, however, lacked a simple way to bring scattered information together, and share it with a clear topical purpose.</p>
+        <p class="case-study-paragraph">Many customers turned to SharePoint or custom websites, which were expensive, hard to build and maintain. Hubs set out to provide a simple, secure, no‑code way to build curated content experiences on top of Box.</p>
+        <p class="case-study-paragraph">Because the product is large and multi-faceted, this case study focuses on three pillars that represented the biggest customer needs and design challenges—each directly grounded in early customer insights.</p>
+        <ul role="list" class="case-study-list-group">
+          <li class="case-study-list"><strong>Builder:</strong> addressing the difficulty teams faced building and maintaining SharePoint sites.</li>
+          <li class="case-study-list"><strong>Search:</strong> solving low relevance and poor discoverability in existing enterprise search tools.</li>
+          <li class="case-study-list"><strong>Pages:</strong> simplifying navigation and structure, a major pain point of deeply nested sites.</li>
+        </ul>
+      </div>
+      <div class="case-study-text-block big-gap-down">
+        <div class="outcomes-block"><h3 class="underlined-header outcomes">Outcomes</h3></div>
+        <p class="case-study-paragraph">Hubs was one of the most anticipated releases at BoxWorks 2024, and adoption reflected that excitement. In the first <strong>90 days</strong>, nearly <strong>2,000 customers</strong> enabled Hubs, a number that grew to more than <strong>5,000</strong> by the end of the first year. User engagement scaled rapidly as well, with <strong>monthly active users</strong> increasing more than <strong>tenfold (10x)</strong> from launch through year one.</p>
+        <p class="case-study-paragraph">As one of the few Box products built from the ground up <strong>(0→1)</strong>. Hubs has quickly become a core part of the platform and an important driver of <strong>enterprise sales</strong>. With the help of Box AI, Hubs has become a powerhouse that allows users to find answers quickly among hundreds of files.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Builder Experience</h1></div>
+    <div class="case-study-section gray">
+      <div class="case-study-text-block gap-up">
+        <h2 class="case-study-header">Problem</h2>
+        <p class="case-study-paragraph">The core Hub concepts existed, but there was no real way for users to create or edit a Hub. First, I cleaned up existing screens to match the new design system, then defined the full builder experience from the ground up.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Home-Page.png" loading="lazy" alt="First iteration of Hubs" class="case-study-image" />
+        <div class="b2-regular gray">Hubs at the start of the project after initial cleaning</div>
+      </div>
+    </div>
+
+    <div class="case-study-section black">
+      <StickyScroll overline="Builder Options" chapters={builderChapters} dark />
+    </div>
+
+    <div class="case-study-section gray">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header">Post BETA Issues</h2>
+        <p class="case-study-paragraph">While the option to show actions on hover made sense at the time, real-world usage revealed user frustrations and lack of discoverability.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Builder-Issues.png" loading="lazy" alt="Post BETA issues" class="case-study-image" />
+        <div class="b2-regular gray">Post BETA issues visualized</div>
+      </div>
+    </div>
+
+    <div class="case-study-section very-big-gap-down">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up">Final Iteration</h2>
+        <p class="case-study-paragraph">I revisited the side panel concept and refined it into a simpler, more discoverable builder. With all blocks visible upfront and every action surfaced when a block was selected, users immediately understood what they could do.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/New-Builder-Experience.png" loading="lazy" alt="New builder experience" class="case-study-image" />
+        <div class="b2-regular gray">New builder experience</div>
+      </div>
+      <div class="case-study-text-block">
+        <p class="case-study-paragraph">This resolved the hover‑related bugs and delivered a far more predictable editing experience. Customer response was extremely positive.</p>
+      </div>
+      <div class="block">
+        <h2 class="quote-text">“I didn't realize how much of a difference being able to just click and add a block would make, but I feel very productive with how quickly it feels to build a Hub.”</h2>
+        <p class="quote-author">- Customer Support Manager</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Search Experience</h1></div>
+    <div class="case-study-section very-light-gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Problem</h2>
+        <p class="case-study-paragraph">Another issue customers faced was search. They mentioned that SharePoint search often failed to return expected results, while Box had a confusing filtering UI — especially for metadata.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/Existing-Box.png" loading="lazy" alt="Existing Box search" />
+        <div class="b2-regular gray">Existing Box search functionality</div>
+      </div>
+    </div>
+
+    <div class="case-study-section gray">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up">Solution</h2>
+        <p class="case-study-paragraph">I introduced a side panel search experience with clearer filter organization. This was later adopted by Box's global Search, indicating strong design alignment.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Search-and-Filters.png" loading="lazy" alt="Hubs search design" />
+        <div class="b2-regular gray">Hubs search design that was adopted by Box</div>
+      </div>
+    </div>
+
+    <div class="case-study-section very-light-gray">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up">Incorporating Box AI</h2>
+        <p class="case-study-paragraph">I also delivered an AI-powered summary panel to allow users get answers quickly. This feature was released internally.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/AI-Response.png" loading="lazy" alt="Box AI search" class="case-study-image" />
+        <div class="b2-regular gray">Box AI search experience before the redesign</div>
+      </div>
+      <div class="case-study-text-block big-gap-down">
+        <p class="case-study-paragraph">Feedback was conflicting:<br>Some users appreciated getting combined answers from multiple files, while others found the persistent AI banner distracting when they simply wanted to locate a specific file.</p>
+        <p class="case-study-paragraph">Based on this information it was obvious that the search would have to be redesigned.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section gray">
+      <div class="case-study-text-block big-gap-down">
+        <h2 class="case-study-header filler-up">Behavioral Insights</h2>
+        <p class="case-study-paragraph">I dove into key usage metrics and research insights to guide my decisions regarding search AI redesign.</p>
+        <div class="w-layout-grid card-grid insights">
+          {stats.map((s) => (
+            <div class="skill-card white">
+              <img src={s.icon} loading="lazy" alt={s.alt} />
+              <p class="_18px-regular">{s.text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="outcomes-block"><h3 class="underlined-header">AHA Moment</h3></div>
+        <p class="case-study-paragraph"><strong>Search should be AI-first: quick search handles simple queries, and Box AI will handle the rest by returning search results or answers based on user query and context.</strong></p>
+      </div>
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up">New Search Model</h2>
+        <p class="case-study-paragraph">Based on this realization, I integrated Box AI within the search flow. Initially I show a user quick search result but on Enter, Box AI evaluates the query and decides whether to surface a direct answer or show search results. Users can seamlessly switch back to the standard results view at any time, maintaining control while benefiting from AI‑powered relevance.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/AI-Results.png" loading="lazy" alt="Hubs Box AI search designs" />
+        <div class="b2-regular gray">Hubs Box AI search designs</div>
+      </div>
+      <div class="case-study-text-block big-gap-down">
+        <p class="case-study-paragraph">While this feature is only released internally and I'm still gathering feedback the hypothesis is that If AI consistently retrieves relevant content, it can streamline or replace traditional search.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Hubs Hierarchy: Pages</h1></div>
+    <div class="case-study-section gray">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">Problem</h2>
+        <p class="case-study-paragraph">Customers began using Hubs for increasingly complex content structures. One example: Box Workplace Services wanted a single Hub for all office information worldwide—a long page with a multitude of sections.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/WPS-Before.gif" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Workplace Services Portal Issue</div>
+      </div>
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-text-block big-gap-down">
+        <h2 class="case-study-header filler-up">Solution Exploration</h2>
+        <p class="case-study-paragraph">Before exploring solutions, engineering flagged a critical constraint: No matter how deep the structure is, users will always gain access to the entire Hub - not just individual subsections.</p>
+        <p class="case-study-paragraph">To guide explorations, I defined three principles:</p>
+        <div class="case-study-image-block">
+          <div class="drop-shadow-block alone">
+            <div class="list-row">
+              <div class="div-block-4"><img src="/images/Checkbox_1.svg" loading="lazy" width="32" alt="" class="checkbox-icon" /><p class="b1-regular list-row">New solution can't degrade 1 page experience</p></div>
+              <div class="line-block"></div>
+            </div>
+            <div class="list-row">
+              <div class="div-block-4"><img src="/images/Checkbox_1.svg" loading="lazy" width="32" alt="" class="checkbox-icon" /><p class="b1-regular list-row">Pages should be easy to create and to consume</p></div>
+              <div class="line-block"></div>
+            </div>
+            <div class="list-row">
+              <div class="div-block-4"><img src="/images/Checkbox_1.svg" loading="lazy" width="32" alt="Checkbox" class="checkbox-icon" /><p class="b1-regular list-row">Make clear that pages are part of the same Hub</p></div>
+              <div class="line-block white"></div>
+            </div>
+          </div>
+        </div>
+        <p class="case-study-paragraph">With these principles in mind, I tested multiple hierarchical models with more than 50 users to uncover patterns and expectations.</p>
+      </div>
+    </div>
+
+    <div class="case-study-section black">
+      <StickyScroll overline="Insights" chapters={insightsChapters} dark />
+    </div>
+
+    <div class="case-study-section">
+      <div class="case-study-text-block big-gap-up">
+        <h2 class="case-study-header filler-up">What was missing?</h2>
+        <p class="case-study-paragraph">I decided to place the pages on the left side, with the possibility of adding a top option later. However, this decision didn't fully take the existing Section Outline functionality into account. In BETA, Section Outline was adopted by 20% of active users, making it a feature that couldn't be ignored.</p>
+      </div>
+      <div class="case-study-image-block">
+        <img src="/images/Sub-pages-exposed-No-ToC.png" loading="lazy" alt="Unfinished solution for Pages" class="case-study-image" />
+        <div class="b2-regular gray">Unfinished solution for Pages</div>
+      </div>
+    </div>
+
+    <div class="case-study-section black">
+      <StickyScroll overline="Section Outline Options" chapters={outlineChapters} dark />
+    </div>
+
+    <div class="case-study-section white-vertical">
+      <div class="case-study-text-block">
+        <h2 class="case-study-header filler-up">Final Solution</h2>
+        <p class="case-study-paragraph">By triggering the outline on scroll, something 83% of users did immediately, I made it discoverable without adding noise on page load. The outline appears only when needed, stays collapsible, and avoids clutter, creating a clean but powerful navigation model for deep Hubs.</p>
+      </div>
+      <div class="case-study-image-block big-gap-down">
+        <img src="/images/Final-Solution.gif" loading="lazy" alt="" class="case-study-image" />
+        <div class="b2-regular gray">Final solution with automatic expansion</div>
+      </div>
+    </div>
+
+    <div class="case-study-section black"><h1 class="section-title-text">Final Thoughts</h1></div>
+    <div class="case-study-section">
+      <div class="case-study-text-block big-gap-up big-gap-down">
+        <h2 class="case-study-header filler-up">Summary</h2>
+        <p class="case-study-paragraph">Hubs began as an ambiguous idea with scattered research, inconsistent early concepts, and no clear product direction. Over two years, I shaped it into a fully realized 0→1 product used by tens of thousands of people. Through continuous iteration, real‑world feedback, and close collaboration with engineering, Hubs evolved into one of Box's fastest‑growing products and a key differentiator for enterprise customers. It now serves as a simple, secure, and powerful way for organizations to turn scattered content into structured knowledge.</p>
+      </div>
+    </div>
+</CaseStudyLayout>

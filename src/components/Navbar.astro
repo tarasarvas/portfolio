@@ -1,0 +1,50 @@
+---
+import Button from './Button.astro';
+
+/**
+ * Top navigation. Used on every page.
+ * `caseStudy` makes it the fixed, blurred bar used on case-study pages.
+ * `current` highlights the active nav link ('work' | 'about').
+ */
+interface Props {
+  caseStudy?: boolean;
+  current?: 'work' | 'about' | null;
+}
+const { caseStudy = false, current = null } = Astro.props;
+
+const contactHref = 'mailto:tarasarvas@gmail.com?subject=Loved%20Your%20Portfolio!';
+---
+
+<div role="banner" class={`navbar ${caseStudy ? 'case-study' : ''}`}>
+  <div class="navigation-div-block">
+    <a href="/" class="brand" aria-label="Home">
+      <img src="/images/Portfolio-Assets_Logo-Full-1.png" loading="lazy" alt="Taras Sarvas" height="40" />
+    </a>
+    <nav role="navigation" class="nav-menu" id="nav-menu">
+      <a href="/#Work" class={`nav-link ${current === 'work' ? 'w--current' : ''}`}>WORK</a>
+      <a href="/about" class={`nav-link ${current === 'about' ? 'w--current' : ''}`}>ABOUT</a>
+      <div class="div-block-6">
+        <a href="https://photos.tarasarvas.com" target="_blank" rel="noopener" class="nav-link external">PHOTOS</a>
+        <img src="/images/Share-Icon.svg" loading="lazy" width="24" alt="" class="image-12" />
+      </div>
+      <Button href={contactHref} variant="secondary">CONTACT</Button>
+    </nav>
+    <button class="menu-button" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Lightweight mobile nav toggle (replaces Webflow's jQuery + webflow.js).
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('nav-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

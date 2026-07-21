@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import SkillCard from '../components/SkillCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const contactHref = 'mailto:tarasarvas@gmail.com?subject=Loved%20Your%20Portfolio!';
+
+const skills = [
+  { icon: '/images/UI.svg', label: 'Simple & intuitive UI' },
+  { icon: '/images/Research.svg', label: 'Research based decisions' },
+  { icon: '/images/Stakeholder.svg', label: 'Stakeholder management' },
+  { icon: '/images/Collaboration.svg', label: 'Cross-functional collaboration' },
+  { icon: '/images/AI.svg', label: 'AI infused designs' },
+];
+
+const projects = [
+  {
+    href: '/hubs',
+    title: 'Box Hubs',
+    subtitle: 'Surface great content faster with Box Hubs',
+    image: '/images/Hubs.png',
+    srcset:
+      '/images/09a5155eef86d7c8e7548acdaf885f10_Hubs-p-500.png 500w, /images/09a5155eef86d7c8e7548acdaf885f10_Hubs-p-800.png 800w, /images/09a5155eef86d7c8e7548acdaf885f10_Hubs-p-1080.png 1080w, /images/09a5155eef86d7c8e7548acdaf885f10_Hubs-p-1600.png 1600w, /images/Hubs.png 2700w',
+    sizes: '(max-width: 479px) 71vw, (max-width: 1439px) 49vw, 50vw',
+  },
+  {
+    href: '/box-ai-in-notes',
+    title: 'Box AI for Notes',
+    subtitle: 'Transforming Content Creation with AI in Box Notes',
+    image: '/images/Notes.png',
+    srcset:
+      '/images/e1e1e3a3180b97df323ef3baf9553fac_Notes-p-500.png 500w, /images/e1e1e3a3180b97df323ef3baf9553fac_Notes-p-800.png 800w, /images/e1e1e3a3180b97df323ef3baf9553fac_Notes-p-1080.png 1080w, /images/e1e1e3a3180b97df323ef3baf9553fac_Notes-p-1600.png 1600w, /images/Notes.png 2700w',
+    sizes: '(max-width: 479px) 100vw, (max-width: 1439px) 49vw, 50vw',
+  },
+  {
+    href: '/oak9',
+    title: 'DevOps Canvas for oak9',
+    subtitle: 'Visualize security of cloud infrastructure',
+    image: '/images/oak9.png',
+    srcset:
+      '/images/oak9-p-500.png 500w, /images/oak9-p-800.png 800w, /images/oak9-p-1080.png 1080w, /images/oak9-p-1600.png 1600w, /images/oak9.png 1800w',
+    sizes: '(max-width: 479px) 71vw, (max-width: 1439px) 49vw, 50vw',
+  },
+  {
+    href: '/oak9-onboarding',
+    title: 'Onboarding Flow for oak9',
+    subtitle: 'Showing the value of oak9 in minutes',
+    image: '/images/oak9-Onboarding.png',
+    srcset:
+      '/images/oak9-Onboarding-p-500.png 500w, /images/oak9-Onboarding-p-800.png 800w, /images/oak9-Onboarding-p-1080.png 1080w, /images/oak9-Onboarding-p-1600.png 1600w, /images/oak9-Onboarding.png 1800w',
+    sizes: '(max-width: 479px) 100vw, (max-width: 1439px) 49vw, 50vw',
+  },
+];
+---
+
+<BaseLayout title="Taras Sarvas | Product Designer" current="work">
+  <div class="hero-section">
+    <div class="hero">
+      <div class="hero-image">
+        <img src="/images/Circle-1.gif" loading="lazy" alt="Taras Sarvas" class="new-hero-image" />
+      </div>
+      <div class="hero-text">
+        <h3 class="hero-subheader">Hi, my name is Taras</h3>
+        <h2 class="hero-header">Iteration-led, ambiguity-ready product designer</h2>
+        <Button href={contactHref} variant="primary">CONTACT</Button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section benefits">
+    <div class="w-layout-grid card-grid benefits">
+      {skills.map((s) => <SkillCard icon={s.icon} label={s.label} />)}
+    </div>
+  </div>
+
+  <div class="section project-header">
+    <div class="section-tiitle">
+      <h2 class="home-page-header">Featured Projects</h2>
+    </div>
+  </div>
+
+  <div id="Work" class="small-card-section">
+    <div class="w-layout-grid card-grid">
+      {projects.map((p) => <ProjectCard {...p} />)}
+    </div>
+  </div>
+
+  <div class="section contact">
+    <div class="contact-me">
+      <img src="/images/Mail.png" loading="lazy" width="280" alt="" class="hidden-image" />
+      <div class="contact-me-text">
+        <h2 class="home-page-header">Contact Information</h2>
+        <p class="_18px-regular contact">
+          If you have a project in mind or you just want to talk about design, don’t hesitate to reach out!
+        </p>
+        <Button href={contactHref} variant="secondary">CONTACT</Button>
+      </div>
+      <img src="/images/Chicago.png" loading="lazy" width="280" alt="" />
+    </div>
+  </div>
+</BaseLayout>

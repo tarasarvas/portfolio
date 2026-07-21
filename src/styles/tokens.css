@@ -1,0 +1,86 @@
+/* ============================================================
+   DESIGN TOKENS  —  the single source of truth
+   Change a value here and it updates everywhere on the site.
+   ============================================================ */
+
+:root {
+  /* -------- Brand + neutral colors -------- */
+  --color-ink: #122029;          /* primary text / near-black */
+  --color-ink-soft: #596369;     /* secondary gray text */
+  --color-bg: #ffffff;           /* main page background */
+  --color-bg-muted: #fbfbfb;     /* very light gray (case-study bg) */
+  --color-surface: #f8f7f6;      /* light gray cards / sections */
+  --color-border: #eeedec;       /* hairline borders */
+
+  /* -------- Accent colors (used in badges, quotes, buttons) -------- */
+  --color-red: #c0313b;
+  --color-red-soft: #ff505c;
+  --color-blue: #51b1ff;
+  --color-blue-ink: #0b4778;
+  --color-blue-bg: #cce7ff;
+  --color-blue-alice: #edf1f7;
+  --color-green: #a5dfa0;
+  --color-green-ink: #288120;
+  --color-green-bg: #edf9ec;
+  --color-yellow: #ffbc35;
+  --color-yellow-ink: #a77614;
+  --color-yellow-bg: #fcefd4;
+  --color-navy: #153952;
+  --color-purple: #4c14db;
+  --color-icon-tile: #d4cefc;
+
+  /* -------- Typography -------- */
+  --font-heading: 'Hind', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  --text-hero: 60px;
+  --text-h1: 64px;
+  --text-h2: 42px;
+  --text-h3: 24px;
+  --text-body: 21px;
+  --text-small: 18px;
+  --text-caption: 15px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* -------- Spacing scale -------- */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
+
+  /* -------- Layout -------- */
+  --container: 1216px;
+  --container-narrow: 1008px;
+  --gutter: 32px;
+
+  /* -------- Radii -------- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-pill: 80px;
+
+  /* -------- Shadows -------- */
+  --shadow-card: 0 8px 16px #0000001a;
+  --shadow-card-hover: 0 16px 24px 8px #0000001a;
+
+  /* -------- Buttons (change these to restyle every button) -------- */
+  --button-radius: var(--radius-pill);
+  --button-padding: 8px 16px;
+  --button-font-size: 15px;
+
+  --button-primary-bg: #1c1917f2;
+  --button-primary-bg-hover: #1c1917e6;
+  --button-primary-bg-active: #1c1917;
+  --button-primary-text: #ffffff;
+
+  --button-secondary-text: #1c1917;
+  --button-secondary-border: #1c19171a;
+  --button-secondary-bg-hover: #1c191708;
+}
