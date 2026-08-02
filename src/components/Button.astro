@@ -3,10 +3,15 @@
  * Button — the single source of truth for every button/CTA on the site.
  * Change the styling in global.css (.button / .button--*) or the tokens
  * in tokens.css (--button-*) and it updates everywhere at once.
+ *
+ * Pass `demo` (or href="#") for style-guide specimens — renders a <button>
+ * so clicks don't navigate.
  */
 interface Props {
-  href: string;
-  variant?: 'primary' | 'secondary';
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  /** Non-navigating specimen for the design system page */
+  demo?: boolean;
   caseStudy?: boolean; // adds case-study spacing
   gapUp?: boolean;
   target?: string;
@@ -14,13 +19,16 @@ interface Props {
 }
 
 const {
-  href,
+  href = '#',
   variant = 'secondary',
+  demo = false,
   caseStudy = false,
   gapUp = false,
   target,
   class: extraClass = '',
 } = Astro.props;
+
+const isDemo = demo || href === '#';
 
 const classes = [
   'button',
@@ -33,6 +41,12 @@ const classes = [
   .join(' ');
 ---
 
-<a href={href} class={classes} {...target ? { target, rel: 'noopener' } : {}}>
-  <slot />
-</a>
+{isDemo ? (
+  <button type="button" class={classes}>
+    <slot />
+  </button>
+) : (
+  <a href={href} class={classes} {...target ? { target, rel: 'noopener' } : {}}>
+    <slot />
+  </a>
+)}

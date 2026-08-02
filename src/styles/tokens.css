@@ -7,6 +7,8 @@
   /* -------- Brand + neutral colors -------- */
   --color-ink: #122029;          /* primary text / near-black */
   --color-ink-soft: #596369;     /* secondary gray text */
+  /* Secondary UI text on surface (#f8f7f6): ~4.56:1 — lightest gray that meets WCAG AA */
+  --color-ink-secondary: #717171;
   --color-bg: #ffffff;           /* main page background */
   --color-bg-muted: #fbfbfb;     /* very light gray (case-study bg) */
   --color-surface: #f8f7f6;      /* light gray cards / sections */
@@ -39,7 +41,10 @@
   --text-h3: 24px;
   --text-body: 21px;
   --text-small: 18px;
-  --text-caption: 15px;
+  --text-product-body: 15px;              /* ProductBody — regular */
+  --text-product-body-semibold: 15px;     /* ProductBodySemiBold */
+  --text-product-small: 13px;             /* ProductSmallBody — regular */
+  --text-product-small-semibold: 13px;    /* ProductSmallBodySemiBold */
 
   --weight-regular: 400;
   --weight-medium: 500;
@@ -47,13 +52,26 @@
   --weight-bold: 700;
 
   /* -------- Spacing scale -------- */
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 24px;
-  --space-lg: 32px;
-  --space-xl: 48px;
-  --space-2xl: 64px;
-  --space-3xl: 80px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+
+  /* Aliases (older names → pixel scale) */
+  --space-xs: var(--space-8);
+  --space-sm: var(--space-16);
+  --space-md: var(--space-24);
+  --space-lg: var(--space-32);
+  --space-xl: var(--space-48);
+  --space-2xl: var(--space-64);
+  --space-3xl: var(--space-80);
 
   /* -------- Layout -------- */
   --container: 1216px;
@@ -67,20 +85,28 @@
   --radius-pill: 80px;
 
   /* -------- Shadows -------- */
-  --shadow-card: 0 8px 16px #0000001a;
-  --shadow-card-hover: 0 16px 24px 8px #0000001a;
+  --shadow-card: 0 4px 12px #00000014;           /* Y 4, blur 12, 8% black */
+  --shadow-card-hover: 0 8px 16px #0000001a;     /* previous default card shadow */
+  --shadow-popover: var(--shadow-card);
 
   /* -------- Buttons (change these to restyle every button) -------- */
-  --button-radius: var(--radius-pill);
+  --button-radius: 12px;
   --button-padding: 8px 16px;
-  --button-font-size: 15px;
+  --button-font-size: var(--text-product-body-semibold);
 
   --button-primary-bg: #1c1917f2;
   --button-primary-bg-hover: #1c1917e6;
   --button-primary-bg-active: #1c1917;
   --button-primary-text: #ffffff;
+  --button-primary-border: #ffffff14; /* ~8% white — matches Figma primary stroke */
 
   --button-secondary-text: #1c1917;
   --button-secondary-border: #1c19171a;
   --button-secondary-bg-hover: #1c191708;
+  /* Shared hover/press overlay for secondary + tertiary */
+  --button-overlay-hover: color-mix(in srgb, var(--color-ink) 2%, transparent);
+  --button-overlay-active: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  /* Tertiary sits on varied surfaces — slightly stronger than secondary */
+  --button-tertiary-overlay-hover: color-mix(in srgb, var(--color-ink) 5%, transparent);
+  --button-tertiary-overlay-active: color-mix(in srgb, var(--color-ink) 8%, transparent);
 }
