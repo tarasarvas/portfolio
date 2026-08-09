@@ -1,0 +1,218 @@
+---
+/**
+ * Rough handwritten font specimens — not linked in the public nav.
+ * Visit /handwriting. All fonts are free Google Fonts suitable for the web.
+ */
+const sample = 'This is me, Taras. Written in a font that would be used elsewhere as well!';
+
+const fonts = [
+  {
+    name: 'Playpen Sans',
+    family: "'Playpen Sans', cursive",
+    note: 'Modern casual print with built-in letter variation — best “real handwriting” feel on the web.',
+    href: 'https://fonts.google.com/specimen/Playpen+Sans',
+  },
+  {
+    name: 'Patrick Hand',
+    family: "'Patrick Hand', cursive",
+    note: 'Clean personal print handwriting. Highly legible for short UI copy and notes.',
+    href: 'https://fonts.google.com/specimen/Patrick+Hand',
+  },
+  {
+    name: 'Architects Daughter',
+    family: "'Architects Daughter', cursive",
+    note: 'Sketchy pencil-style print. Irregular, architectural, rough without going cursive.',
+    href: 'https://fonts.google.com/specimen/Architects+Daughter',
+  },
+  {
+    name: 'Permanent Marker',
+    family: "'Permanent Marker', cursive",
+    note: 'Bold felt-tip marker. Rough edges, strong presence for short headlines.',
+    href: 'https://fonts.google.com/specimen/Permanent+Marker',
+  },
+  {
+    name: 'Rock Salt',
+    family: "'Rock Salt', cursive",
+    note: 'Chalky, uneven marker. One of the roughest options that still reads clearly.',
+    href: 'https://fonts.google.com/specimen/Rock+Salt',
+  },
+  {
+    name: 'Gloria Hallelujah',
+    family: "'Gloria Hallelujah', cursive",
+    note: 'Notepad doodle energy — uneven baseline, friendly rough print.',
+    href: 'https://fonts.google.com/specimen/Gloria+Hallelujah',
+  },
+  {
+    name: 'Indie Flower',
+    family: "'Indie Flower', cursive",
+    note: 'Informal rounded print. Soft and personal without formal script joins.',
+    href: 'https://fonts.google.com/specimen/Indie+Flower',
+  },
+  {
+    name: 'Gochi Hand',
+    family: "'Gochi Hand', cursive",
+    note: 'Soft marker print with a playful, slightly chunky stroke.',
+    href: 'https://fonts.google.com/specimen/Gochi+Hand',
+  },
+  {
+    name: 'Just Another Hand',
+    family: "'Just Another Hand', cursive",
+    note: 'Thin scratchy pen. Very rough and spontaneous; best at larger sizes.',
+    href: 'https://fonts.google.com/specimen/Just+Another+Hand',
+  },
+  {
+    name: 'Covered By Your Grace',
+    family: "'Covered By Your Grace', cursive",
+    note: 'Quick marker scrawl. Loose and imperfect — good for accents, not long body.',
+    href: 'https://fonts.google.com/specimen/Covered+By+Your+Grace',
+  },
+  {
+    name: 'Amatic SC',
+    family: "'Amatic SC', cursive",
+    note: 'Tall condensed hand lettering (small caps). Rough display print for titles.',
+    href: 'https://fonts.google.com/specimen/Amatic+SC',
+  },
+  {
+    name: 'Sriracha',
+    family: "'Sriracha', cursive",
+    note: 'Marker handwriting with thick/thin contrast. Rough but still readable.',
+    href: 'https://fonts.google.com/specimen/Sriracha',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handwritten Fonts · Taras Sarvas</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Architects+Daughter&family=Covered+By+Your+Grace&family=Gochi+Hand&family=Gloria+Hallelujah&family=Indie+Flower&family=Just+Another+Hand&family=Open+Sans:wght@400;600&family=Patrick+Hand&family=Permanent+Marker&family=Playpen+Sans:wght@400;600&family=Rock+Salt&family=Sriracha&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #121f28;
+        --ink-soft: #595e69;
+        --bg: #ffffff;
+        --surface: #f8f7f6;
+        --border: #eeedec;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        color: var(--ink);
+        background: var(--surface);
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 32px 96px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+      .lead {
+        margin: 0 0 40px;
+        max-width: 58ch;
+        color: var(--ink-soft);
+        font-size: 15px;
+      }
+      .lead code {
+        font-size: 13px;
+        background: var(--bg);
+        padding: 1px 6px;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 767px) {
+        .wrap { padding: 32px 20px 64px; }
+        .grid { grid-template-columns: 1fr; }
+      }
+      .card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 200px;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .name {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .link {
+        font-size: 12px;
+        color: var(--ink-soft);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .link:hover { color: var(--ink); text-decoration: underline; }
+      .sample {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.35;
+        color: var(--ink);
+      }
+      .note {
+        margin: auto 0 0;
+        padding-top: 8px;
+        font-size: 13px;
+        color: var(--ink-soft);
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Rough handwritten fonts</h1>
+      <p class="lead">
+        Twelve print / marker / sketch hands from Google Fonts — not cursive scripts.
+        All are free for web use. Open <code>/handwriting</code> anytime; not in the public nav.
+      </p>
+
+      <div class="grid">
+        {fonts.map((font) => (
+          <article class="card">
+            <div class="meta">
+              <h2 class="name">{font.name}</h2>
+              <a class="link" href={font.href} target="_blank" rel="noopener noreferrer">
+                Google Fonts ↗
+              </a>
+            </div>
+            <p class="sample" style={`font-family: ${font.family}`}>
+              {sample}
+            </p>
+            <p class="note">{font.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </body>
+</html>

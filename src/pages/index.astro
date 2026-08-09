@@ -55,13 +55,54 @@ const projects = [
 ---
 
 <BaseLayout title="Taras Sarvas | Product Designer" current="work">
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
   <div class="hero-section">
     <div class="hero">
       <div class="hero-image">
         <img src="/images/Circle-1.gif" loading="lazy" alt="Taras Sarvas" class="new-hero-image" />
       </div>
       <div class="hero-text">
-        <h3 class="hero-subheader">Hi, my name is Taras</h3>
+        <h3 class="hero-subheader">
+          <span class="hero-subheader__note">
+            <svg
+              class="hero-arrow"
+              viewBox="0 0 120 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M115 17 C 80 9, 42 15, 15 41"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 41 L33 37"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 41 L21 25"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            This is me, Taras!
+          </span>
+          <span class="hero-subheader__hi">Hi, my name is Taras</span>
+        </h3>
         <h2 class="hero-header">Iteration-led, ambiguity-ready product designer</h2>
         <Button href={contactHref} variant="primary">Contact</Button>
       </div>
@@ -88,7 +129,7 @@ const projects = [
 
   <div class="section contact">
     <div class="contact-me">
-      <img src="/images/Mail.png" loading="lazy" width="280" alt="" class="hidden-image" />
+      <img src="/images/San%20Francisco.png" loading="lazy" width="280" alt="" class="hidden-image" />
       <div class="contact-me-text">
         <h2 class="home-page-header">Contact Information</h2>
         <p class="_18px-regular contact">
