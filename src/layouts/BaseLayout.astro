@@ -50,7 +50,7 @@ const {
       gtag('config', 'G-BQZW5PY1X9', { anonymize_ip: false });
     </script>
   </head>
-  <body class={`body ${caseStudy ? 'case-study' : ''}`}>
+  <body class={`body ${caseStudy ? 'case-study' : ''} ${current === 'about' ? 'page-about' : ''}`}>
     <Navbar caseStudy={caseStudy} current={current} />
     <main>
       <slot />

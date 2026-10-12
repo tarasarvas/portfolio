@@ -69,8 +69,6 @@ const reveals = [
     </div>
   </div>
 
-  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
-
   <div class="case-study-section gray">
     <div class="case-study-block left-right-element about">
       <div class="left-column">
@@ -85,12 +83,12 @@ const reveals = [
       <div class="right-column">
         <div class="content-holder" id="sticky-stage">
           {chapters.map((c, i) => (
-            <div class="sliding-picture" data-pic={c.key} style={i === 0 ? '' : 'opacity:0'}>
+            <div class={`sliding-picture${i === 0 ? ' is-active' : ''}`} data-pic={c.key}>
               <img src={c.map} loading="lazy" alt={`Map for ${c.key}`} class="sliding-image about" />
             </div>
           ))}
           {reveals.map((r) => (
-            <div class="sliding-picture" data-pic={r.key} style="opacity:0">
+            <div class="sliding-picture" data-pic={r.key}>
               <img src={r.src} loading="lazy" alt={r.alt} class="sliding-image about" />
             </div>
           ))}
@@ -99,11 +97,9 @@ const reveals = [
     </div>
   </div>
 
-  <div class="filler-section"><div class="filler-image" style="min-height:40px;background:var(--color-surface)"></div></div>
-
   <div class="section contact">
     <div class="contact-me">
-      <img src="/images/Mail.png" loading="lazy" width="280" alt="" class="hidden-image" />
+      <img src="/images/San%20Francisco.png" loading="lazy" width="320" alt="" class="hidden-image" />
       <div class="contact-me-text">
         <h2 class="home-page-header">Contact Information</h2>
         <p class="_18px-regular contact">
@@ -112,7 +108,7 @@ const reveals = [
         </p>
         <Button href={contactHref} variant="secondary">Contact</Button>
       </div>
-      <img src="/images/Chicago.png" loading="lazy" width="280" alt="" />
+      <img src="/images/Chicago.png" loading="lazy" width="320" alt="" />
     </div>
   </div>
 </BaseLayout>
@@ -123,31 +119,56 @@ const reveals = [
   // - Hovering a bold word reveals its photo; leaving restores the map.
   const stage = document.getElementById('sticky-stage');
   if (stage) {
-    const pics = new Map<string, HTMLElement>();
-    stage.querySelectorAll<HTMLElement>('[data-pic]').forEach((el) => pics.set(el.dataset.pic!, el));
+    const pics = new Map();
+    stage.querySelectorAll('[data-pic]').forEach((el) => pics.set(el.dataset.pic, el));
 
     let activeChapter = 'ukraine';
-    const show = (key: string) => {
-      pics.forEach((el, k) => (el.style.opacity = k === key ? '1' : '0'));
+    const show = (key) => {
+      pics.forEach((el, k) => el.classList.toggle('is-active', k === key));
     };
 
-    const chapters = document.querySelectorAll<HTMLElement>('[data-chapter]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activeChapter = (entry.target as HTMLElement).dataset.chapter!;
-            show(activeChapter);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    chapters.forEach((c) => observer.observe(c));
+    const chapters = [...document.querySelectorAll('[data-chapter]')];
 
-    document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((word) => {
+    // Image switches when this line (as % of viewport height from the top)
+    // crosses into a chapter. LOWER number = wait until more of the chapter
+    // is on screen (heading alone is not enough).
+    const TRIGGER_Y = 0.35;
+
+    const sync = () => {
+      const y = window.innerHeight * TRIGGER_Y;
+      let next = activeChapter;
+      for (const el of chapters) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= y && rect.bottom > y) {
+          next = el.dataset.chapter;
+          break;
+        }
+      }
+      if (next && next !== activeChapter) {
+        activeChapter = next;
+        show(activeChapter);
+      }
+    };
+
+    let ticking = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(() => {
+            sync();
+            ticking = false;
+          });
+        }
+      },
+      { passive: true }
+    );
+    sync();
+
+    document.querySelectorAll('[data-reveal]').forEach((word) => {
       word.style.cursor = 'help';
-      word.addEventListener('mouseenter', () => show(word.dataset.reveal!));
+      word.addEventListener('mouseenter', () => show(word.dataset.reveal));
       word.addEventListener('mouseleave', () => show(activeChapter));
     });
   }

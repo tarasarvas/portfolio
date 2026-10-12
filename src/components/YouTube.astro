@@ -12,28 +12,36 @@ const src = `https://www.youtube.com/embed/${id}?rel=0&controls=${controls ? 1 :
 
 <div class="case-study-image-block you-tube _16-9">
   <div class="youtube-embed">
-    <iframe
-      src={src}
-      title={title}
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen
-      loading="lazy"
-    ></iframe>
+    <div class="youtube-embed__media">
+      <iframe
+        src={src}
+        title={title}
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
   </div>
   {caption && <div class="b2-regular gray">{caption}</div>}
 </div>
 
 <style>
+  /* Shadow lives on the outer shell — overflow:hidden on the same node would clip it
+     (shadow is mostly downward: 0 4px 12px). */
   .youtube-embed {
+    width: 100%;
+    border-radius: var(--radius-md); /* 16px — same as .case-study-image */
+    box-shadow: var(--shadow-card);
+  }
+  .youtube-embed__media {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 0;
-    box-shadow: var(--shadow-card);
+    border-radius: inherit;
     overflow: hidden;
   }
-  .youtube-embed iframe {
+  .youtube-embed__media iframe {
     position: absolute;
     inset: 0;
     width: 100%;

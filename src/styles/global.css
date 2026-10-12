@@ -54,6 +54,13 @@ img {
 }
 
 /* ---- Base elements (design-system typography) ---- */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   color: var(--color-ink);
   margin: 0;
@@ -95,7 +102,7 @@ h3 {
 
 p {
   color: var(--color-ink);
-  margin-bottom: 0;
+  margin: 0;
   font-size: var(--text-body);
   font-weight: var(--weight-regular);
 }
@@ -167,7 +174,8 @@ a {
   padding-right: var(--gutter);
   background-color: transparent;
   background-image: none;
-  border-bottom: none;
+  /* Always reserve 1px so frost never flashes a default (dark) border. */
+  border-bottom: 1px solid transparent;
   transform: translateY(0);
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -181,8 +189,13 @@ a {
   backdrop-filter: blur(16px) saturate(140%);
   background-color: rgba(248, 247, 246, 0.62);
   background-color: color-mix(in srgb, var(--color-surface) 62%, transparent);
-  border-bottom: 1px solid rgba(238, 237, 236, 0.7);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  border-bottom-color: rgba(238, 237, 236, 0.7);
+  border-bottom-color: color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+/* About (and other white-bg pages): frost should blend with --color-bg, not surface. */
+.body.page-about .navbar.is-frosted {
+  background-color: rgba(255, 255, 255, 0.72);
+  background-color: color-mix(in srgb, var(--color-bg) 72%, transparent);
 }
 .navbar.is-hidden {
   transform: translateY(-100%);
@@ -245,7 +258,7 @@ a {
   right: 0; /* flush with Contact’s right edge; may extend left past Photos */
   z-index: 60;
   width: 280px;
-  padding: 12px 16px;
+  padding: 12px 16px 16px;
   border-radius: 12px; /* match button radius */
   border: 1px solid var(--color-border);
   background-color: var(--color-bg);
@@ -359,6 +372,44 @@ a {
   justify-content: center;
   align-items: stretch;
   display: flex;
+  position: relative;
+}
+/* ---- Hero texture ---- */
+.hero-section[data-texture='none'] {
+  background-image: none;
+}
+/* Soft Moleskine-style dots — 16px pitch (matches design-system 8pt × 2) */
+.hero-section[data-texture='dots'] {
+  background-image: radial-gradient(circle, rgba(18, 32, 41, 0.12) 1px, transparent 1.2px);
+  background-size: 16px 16px;
+}
+/* Notebook dots — 24px pitch */
+.hero-section[data-texture='dots-dense'] {
+  background-image: radial-gradient(circle, rgba(18, 32, 41, 0.14) 1px, transparent 1.15px);
+  background-size: 24px 24px;
+}
+/* Architectural blueprint squares */
+.hero-section[data-texture='grid'] {
+  background-image:
+    linear-gradient(rgba(18, 32, 41, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 32, 41, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* Finer graph-paper grid */
+.hero-section[data-texture='grid-fine'] {
+  background-image:
+    linear-gradient(rgba(18, 32, 41, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 32, 41, 0.07) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+/* Blueprint with major every 5 cells */
+.hero-section[data-texture='blueprint'] {
+  background-image:
+    linear-gradient(rgba(18, 32, 41, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 32, 41, 0.14) 1px, transparent 1px),
+    linear-gradient(rgba(18, 32, 41, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 32, 41, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
 }
 .hero {
   object-fit: fill;
@@ -399,7 +450,7 @@ a {
   height: auto;
   color: var(--color-ink);
 }
-.hero-header { padding-bottom: 40px; font-size: 44px; font-weight: 600; line-height: 48px; }
+.hero-header { margin-top: 8px; padding-bottom: 40px; font-size: 44px; font-weight: 600; line-height: 48px; }
 
 /* ============================================================
    SECTIONS
@@ -480,6 +531,8 @@ a {
   align-items: center;
   padding-bottom: 48px;
   display: flex;
+  /* Clear fixed navbar when jumping to #Work (+24px breathing room) */
+  scroll-margin-top: 120px;
 }
 .card-project {
   background-color: var(--color-surface);
@@ -509,7 +562,7 @@ a {
   order: 1;
   justify-content: space-between;
   align-self: stretch;
-  align-items: center;
+  align-items: flex-start;
   max-width: var(--container);
   margin-left: var(--gutter);
   margin-right: var(--gutter);
@@ -520,8 +573,9 @@ a {
   text-align: center;
   flex-flow: column;
   order: 0;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
+  padding-left: 0;
+  padding-right: 0;
+  align-self: center;
   display: block;
 }
 .hidden-image { }
@@ -531,6 +585,7 @@ a {
    ============================================================ */
 .footer {
   background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -584,7 +639,7 @@ a {
   .section.project-header { flex-flow: row; justify-content: center; align-items: stretch; }
   .hero { justify-content: center; }
   .hero-section { height: 101vh; }
-  .hero-header { font-size: 60px; font-weight: 700; line-height: 72px; }
+  .hero-header { font-size: 60px; font-weight: 700; line-height: 64px; }
   .home-page-header { flex-flow: row; justify-content: flex-start; align-items: flex-start; }
 }
 
@@ -619,6 +674,7 @@ a {
   .hero-image { width: auto; }
   .hero-header { padding-bottom: 16px; line-height: 56px; }
   .contact-me-text { text-align: left; }
+  ._18px-regular.contact { text-align: left; }
   .footer-card.middle { display: none; }
   .home-page-header { text-align: left; margin-left: 0; margin-right: 0; }
   .hidden-image { display: none; }

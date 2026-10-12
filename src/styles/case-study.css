@@ -5,8 +5,20 @@
    ============================================================ */
 
 /* ---- Case-study hero ---- */
-.case-study-hero-section { flex-direction: column; align-items: center; display: flex; position: relative; }
-.background-image { object-fit: cover; width: 100%; height: 85vh; }
+.case-study-hero-section {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  position: relative;
+  /* Clear fixed navbar (same 80px clearance as About / home content). */
+  padding-top: 80px;
+}
+.background-image {
+  object-fit: cover;
+  object-position: top center;
+  width: 100%;
+  height: 85vh;
+}
 .div-block-for-logo-background {
   justify-content: flex-start;
   width: 100%;
@@ -29,6 +41,58 @@
 }
 .logo-for-background { max-width: 320px; height: auto; }
 
+/*
+  First-viewport intro (Hubs):
+  [nav clearance] → image fills leftover → logo → title → description at bottom.
+*/
+.case-study-intro {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  height: 100svh;
+  padding-top: 80px;
+}
+.case-study-intro .case-study-hero-section {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: 0;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.case-study-intro .background-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  /* Taller + shifted up so overflow clips ~32px from the top of the artwork. */
+  height: calc(100% + 32px);
+  max-height: none;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
+  transform: translateY(-32px);
+}
+.case-study-intro-meta {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+}
+.case-study-intro .case-study-title-block {
+  width: 100%;
+}
+.case-study-intro .case-study-header {
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+.case-study-intro .case-study-paragraph {
+  padding-bottom: 0;
+}
+
 /* ---- Case-study sections ---- */
 .case-study-section {
   background-color: var(--color-bg);
@@ -42,6 +106,14 @@
 }
 .case-study-section.black { background-color: var(--color-ink); padding-top: 32px; padding-bottom: 32px; }
 .case-study-section.gray { background-color: var(--color-surface); padding-top: 0; }
+
+/* About story section: hero-style edge rules (no texture) */
+.body.page-about .case-study-section.gray {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
 .case-study-section.white { background-color: var(--color-bg); flex-direction: row; justify-content: center; }
 .case-study-section.white-vertical { background-color: var(--color-bg); }
 .case-study-section.very-light-gray,
@@ -52,7 +124,11 @@
 .case-study-title-block { width: 100%; max-width: 1280px; display: block; }
 .case-study-title-block.narrow { max-width: 1072px; }
 .case-study-header { width: auto; margin-left: var(--gutter); margin-right: var(--gutter); padding-top: 24px; padding-bottom: 24px; }
-.case-study-header.filler-up { padding-top: 0; }
+/* filler-up cancels the header’s own top padding only when the text block
+   already opens with space (after a black section title: .big-gap-up / .gap-up).
+   Otherwise the header sits flush against the previous section. */
+.case-study-text-block.big-gap-up > .case-study-header.filler-up,
+.case-study-text-block.gap-up > .case-study-header.filler-up { padding-top: 0; }
 .case-study-header.filler-up.white,
 .case-study-header.white { color: var(--color-bg); }
 .case-study-header.tiny-gap { padding-bottom: 8px; }
@@ -78,11 +154,29 @@
   display: flex;
 }
 .case-study-block.left-right-element { display: flex; }
-.case-study-block.left-right-element.about { justify-content: center; max-width: var(--container); }
+/* Same width model as .about-me-grid.wide / .contact-me:
+   full content width up to --container, inset by --gutter on each side. */
+.case-study-block.left-right-element.about {
+  justify-content: flex-start;
+  align-self: center;
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--gutter));
+  max-width: var(--container);
+  margin-left: var(--gutter);
+  margin-right: var(--gutter);
+}
 
 .case-study-text-block { width: 100%; max-width: 1072px; padding: 0 0 40px; }
 .case-study-text-block.no-gap-up { padding-top: 0; }
 .case-study-text-block.big-gap-up { padding-top: 80px; }
+/* First block in a section, when it isn’t already opened by .big-gap-up / .gap-up
+   (those follow a black section title). Match that 80px, and don’t stack the header’s 24px. */
+.case-study-section > .case-study-text-block:first-child:not(.big-gap-up):not(.gap-up):not(.no-gap-up) {
+  padding-top: 80px;
+}
+.case-study-section > .case-study-text-block:first-child:not(.big-gap-up):not(.gap-up):not(.no-gap-up) > .case-study-header {
+  padding-top: 0;
+}
 .case-study-text-block.big-gap-down { padding-bottom: 80px; }
 .case-study-text-block.big-gap-down.wide { max-width: 1280px; }
 .case-study-text-block.no-gap-down { padding-bottom: 0; }
@@ -121,10 +215,10 @@
 ._2-column-grid.big-gap-up { padding-top: 64px; }
 ._2-column-grid.no-gap-down { padding-bottom: 0; }
 ._2-column-grid.equal { grid-template-columns: 1fr 1fr; padding-top: 0; padding-bottom: 0; }
-._2-column-header { padding-bottom: 40px; }
+._2-column-header { padding-bottom: 24px; }
 ._2-column-header.white { color: var(--color-bg); }
 ._2-column-header.warning { padding-top: 0; padding-bottom: 24px; }
-._2-column-paragraph { color: var(--color-ink); padding-bottom: 16px; }
+._2-column-paragraph { color: var(--color-ink); padding-bottom: 8px; }
 ._2-column-paragraph.white { color: var(--color-bg); }
 ._2-column-paragraph.warning { padding-bottom: 32px; }
 
@@ -269,7 +363,8 @@
 .case-study-image-block.big-gap-down { width: auto; padding-bottom: 80px; }
 .case-study-image-block.big-gap-up { padding-top: 80px; }
 .case-study-image-block.you-tube { border-radius: 0; align-items: stretch; width: 100%; max-width: 1072px; padding-bottom: 80px; }
-.case-study-image-block.you-tube._16-9 { justify-content: center; align-items: center; height: auto; padding: 24px 32px 0; }
+/* Keep bottom padding so --shadow-card (0 4px 12px) isn’t covered by the next section. */
+.case-study-image-block.you-tube._16-9 { justify-content: center; align-items: center; height: auto; padding: 24px 32px 24px; }
 .case-study-image { object-fit: fill; border: 1px solid #eaeaea; border-radius: 16px; box-shadow: var(--shadow-card); }
 
 .filler-image { background-color: var(--color-bg); width: 100%; min-height: 40px; }
@@ -296,12 +391,21 @@
   padding-bottom: 64px;
   display: grid;
 }
-.about-me-grid.wide { grid-column-gap: 0px; grid-template-columns: 1fr 1fr; max-width: var(--container); padding-top: 0; padding-bottom: 0; }
+.about-me-grid.wide {
+  grid-column-gap: 0px;
+  grid-template-columns: 1fr 1fr;
+  max-width: var(--container);
+  /* Clear the fixed navbar (min-height 80px) — same idea as Home’s hero breathing room. */
+  padding-top: 80px;
+  padding-bottom: 0;
+}
 .image-6 { max-width: 100%; border-radius: var(--radius-md); }
 .div-block-5 { }
 
 .left-column { width: 50%; }
 .right-column { width: 50%; position: sticky; top: 0; }
+.case-study-block.left-right-element.about .left-column { width: 50%; }
+.case-study-block.left-right-element.about .right-column { width: 50%; }
 .left-right-text-block {
   flex-direction: column;
   justify-content: center;
@@ -312,6 +416,28 @@
   display: flex;
 }
 .left-right-text-block.first { margin-top: -40px; }
+/* About: keep first chapter aligned with the sticky image (no opposing offsets). */
+.body.page-about .left-right-text-block.first { margin-top: 0; }
+.body.page-about .right-column,
+.body.page-about .content-holder {
+  /* Sit below fixed navbar; matches text optically in the chapter viewport. */
+  top: 80px;
+}
+.body.page-about .sliding-picture {
+  padding-top: 0;
+  padding-left: 0;
+  opacity: 0;
+  filter: blur(14px);
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
+  pointer-events: none;
+}
+.body.page-about .sliding-picture.is-active {
+  opacity: 1;
+  filter: blur(0);
+  pointer-events: auto;
+}
 .content-holder { height: 80vh; max-height: 600px; position: sticky; top: 0; }
 .sliding-picture {
   opacity: 1;
@@ -376,6 +502,7 @@
 
 @media screen and (max-width: 767px) {
   .background-image { height: 60vh; }
+  .case-study-intro .background-image { height: 100%; max-height: none; min-height: 0; }
   .case-study-paragraph { font-size: 18px; }
   .challenge-grid { grid-template-rows: auto auto; grid-template-columns: 1fr; }
   .section-title-text { font-size: 32px; }
@@ -385,9 +512,12 @@
   .block { width: 90%; }
   .quote-text { font-size: 24px; line-height: 32px; }
   .left-column { width: auto; }
+  /* About 60/40 split must yield to full-width stack when sticky column hides. */
+  .case-study-block.left-right-element.about .left-column { width: 100%; }
   .right-column { display: none; }
   .left-right-text-block { height: auto; max-height: 100%; padding-right: 0; }
   .left-right-text-block.first { height: auto; max-height: 100%; margin-top: 30px; }
+  .body.page-about .left-right-text-block.first { margin-top: 0; }
   .sliding-image.hide { padding-top: 32px; padding-bottom: 80px; display: block; position: static; }
   .sliding-image.hide.about { padding-top: 64px; padding-bottom: 0; }
   .interview-header { font-size: 24px; line-height: 32px; }
@@ -404,9 +534,16 @@
 
 @media screen and (max-width: 479px) {
   .background-image { height: 40vh; }
+  .case-study-intro .background-image { height: 100%; max-height: none; min-height: 0; }
   .case-study-title-block, .case-study-header, .case-study-paragraph { margin-left: 16px; margin-right: 16px; }
   .case-study-block.challenge { margin-left: 16px; margin-right: 16px; padding-left: 16px; padding-right: 16px; }
   .case-study-block.left-right-element { flex-direction: column; margin-left: 16px; margin-right: 16px; }
+  /* Keep About story aligned with .about-me-grid at this breakpoint (16px inset). */
+  .body.page-about .case-study-block.left-right-element.about {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
   ._2-column-grid { margin-left: 16px; margin-right: 16px; padding-bottom: 24px; }
   ._2-column-header { padding-bottom: 24px; font-size: 32px; }
   .block { width: 92%; margin-left: 16px; margin-right: 16px; padding-left: 16px; padding-right: 16px; }
